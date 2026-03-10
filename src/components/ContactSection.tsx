@@ -13,7 +13,7 @@ const ContactSection = () => {
     // Persiapkan data untuk dikirim ke Web3Forms
     const submissionData = {
       ...formData,
-      access_key: "MASUKKAN-ACCESS-KEY-KAMU-DI-SINI", // Dapatkan di web3forms.com
+      access_key: "1aed00de-c4c1-43c6-b89d-8ec0432635d8",
     };
 
     try {
