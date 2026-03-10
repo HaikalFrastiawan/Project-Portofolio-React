@@ -5,6 +5,7 @@ import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import GitHubSection from "@/components/GitHubSection";
 import JourneySection from "@/components/JourneySection";
+import Certifications from "@/components/CertificatesSection";
 import ContactSection from "@/components/ContactSection";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
@@ -17,7 +18,8 @@ const Index = () => {
       <SkillsSection />
       <ProjectsSection />
       <GitHubSection />
-      <JourneySection />
+      <JourneySection /> 
+      <Certifications />
       <ContactSection />
       <WhatsAppFloat />
     </main>

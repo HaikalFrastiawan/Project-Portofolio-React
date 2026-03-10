@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 
 const roles = [
-  "Full Stack Developer",
-  "Backend Engineer",
-  "React & Golang Enthusiast",
-  "Building Scalable Web Apps",
+  "Backend Architecture Specialist", 
+  "Full Stack Web Engineer",      
+  "Golang & React Developer",      
+  "Building High-Performance APIs", 
+  "Database & System Designer",     
 ];
 
 const techIcons = [
@@ -22,25 +23,35 @@ const TypingEffect = () => {
   const [text, setText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
-  useEffect(() => {
-    const current = roles[roleIndex];
-    const timeout = setTimeout(
-      () => {
-        if (!deleting) {
-          setText(current.slice(0, text.length + 1));
-          if (text.length + 1 === current.length) {
-            setTimeout(() => setDeleting(true), 2000);
-          }
-        } else {
-          setText(current.slice(0, text.length - 1));
-          if (text.length === 0) {
-            setDeleting(false);
-            setRoleIndex((prev) => (prev + 1) % roles.length);
-          }
+useEffect(() => {
+    const currentRole = roles[roleIndex];
+    
+    const handleTyping = () => {
+      if (!deleting) {
+        // FASE MENGETIK
+        const nextText = currentRole.slice(0, text.length + 1);
+        setText(nextText);
+
+        // Jika sudah selesai mengetik satu role
+        if (nextText === currentRole) {
+          setTimeout(() => setDeleting(true), 2000); // Tunggu 2 detik sebelum hapus
         }
-      },
-      deleting ? 40 : 80
-    );
+      } else {
+        // FASE MENGHAPUS
+        const nextText = currentRole.slice(0, text.length - 1);
+        setText(nextText);
+
+        // Jika sudah habis terhapus
+        if (nextText === "") {
+          setDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    };
+
+    const speed = deleting ? 40 : 80;
+    const timeout = setTimeout(handleTyping, speed);
+
     return () => clearTimeout(timeout);
   }, [text, deleting, roleIndex]);
 

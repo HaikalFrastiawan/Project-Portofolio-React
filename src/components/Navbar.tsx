@@ -8,53 +8,85 @@ const navItems = [
   { label: "Projects", href: "#projects" },
   { label: "GitHub", href: "#github" },
   { label: "Journey", href: "#journey" },
+  { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(""); 
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-40% 0px -40% 0px", 
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+
+    navItems.forEach((item) => {
+      const element = document.querySelector(item.href);
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass" : "bg-transparent"
+        scrolled ? "glass py-3" : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-column mx-auto px-6 py-4 flex items-center justify-between">
-
+      <div className="max-w-column mx-auto px-6 flex items-center justify-between">
+        {/* Logo Section */}
         <a href="#" className="relative group flex items-center">
-          {/* Efek cahaya di belakang logo */}
-          <div className="absolute -inset-2 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          
-          <img 
-            src="/img/3.png" 
-            alt="HF Logo" 
-            className="h-10 md:h-12 w-auto scale-120 origin-left object-contain transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]"
-          />
+          <img src="/img/3.png" alt="Logo" className="h-10 w-auto" />
         </a>
-              
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-body text-muted-foreground hover:text-primary transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-6">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href.substring(1);
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`text-sm font-medium transition-all duration-300 relative px-1 ${
+                  isActive ? "text-primary scale-110" : "text-muted-foreground hover:text-primary/80"
+                }`}
+              >
+                {item.label}
+                {/* animasi  aktif */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </a>
+            );
+          })}
         </div>
 
         {/* Mobile toggle */}
