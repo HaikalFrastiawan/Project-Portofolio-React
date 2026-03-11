@@ -10,7 +10,6 @@ const ContactSection = () => {
     e.preventDefault();
     setStatus("sending");
 
-    // Persiapkan data untuk dikirim ke Web3Forms
     const submissionData = {
       ...formData,
       access_key: "1aed00de-c4c1-43c6-b89d-8ec0432635d8",
@@ -121,7 +120,6 @@ const ContactSection = () => {
               </form>
             </div>
 
-            {/* Quick contact (Bagian kanan tetap sama) */}
             <div className="glass-card rounded-xl p-8 flex flex-col justify-between">
               <div>
                 <h3 className="font-heading font-semibold text-sm text-primary tracking-wider uppercase mb-8">

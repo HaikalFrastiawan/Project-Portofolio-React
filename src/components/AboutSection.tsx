@@ -3,7 +3,7 @@ import { Code2, Database, Globe, Server } from "lucide-react";
 
 const focusAreas = [
   { icon: Globe, title: "Frontend Development", desc: "Crafting responsive, performant UIs with React & Next.js" },
-  { icon: Server, title: "Backend Development", desc: "Building robust APIs with Node.js and Golang" },
+  { icon: Server, title: "Backend Development", desc: "Building robust APIs with Golang and Node.Js" },
   { icon: Code2, title: "API Development", desc: "Designing RESTful and GraphQL APIs at scale" },
   { icon: Database, title: "Database Design", desc: "Modeling data with PostgreSQL and MongoDB" },
 ];
