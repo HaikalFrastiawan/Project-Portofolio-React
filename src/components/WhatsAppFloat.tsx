@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const WhatsAppFloat = () => {
   return (
     <motion.a
-      href="https://wa.me/089654461348"
+      href="https://wa.me/08136761485"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-primary text-primary-foreground p-3.5 rounded-full hover:opacity-90 transition-opacity pulse-glow"

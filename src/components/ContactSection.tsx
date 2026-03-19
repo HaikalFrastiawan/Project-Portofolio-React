@@ -127,7 +127,7 @@ const ContactSection = () => {
                 </h3>
                 <div className="space-y-5">
                   {[
-                    { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/089654461348", desc: "Chat with me directly" },
+                    { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/08136761485", desc: "Chat with me directly" },
                     { icon: Mail, label: "Email", href: "mailto:haikalfrastiawan16@gmail.com", desc: "haikalfrastiawan16@gmail.com" },
                     { icon: Github, label: "GitHub", href: "https://github.com/HaikalFrastiawan", desc: "Check my repositories" },
                     { icon: Linkedin, label: "LinkedIn", href: "http://linkedin.com/in/haikal-frastiawan-5b8287277/", desc: "Let's connect" },

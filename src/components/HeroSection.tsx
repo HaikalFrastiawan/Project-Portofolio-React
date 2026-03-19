@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useSpring } from "framer-motion";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 
-// Roles yang mencakup Go (Gin/Fiber), Node.js, dan NestJS
 const roles = [
   "Backend Engineering Specialist",
   "Golang (Gin & Fiber) Developer",
@@ -14,12 +13,20 @@ const roles = [
 const techIconsData = [
   { label: "Golang", x: "75%", y: "15%", delay: 0, color: "#00ADD8" },
   { label: "NestJS", x: "85%", y: "40%", delay: 0.5, color: "#E0234E" },
-  { label: "Gin/Fiber", x: "65%", y: "55%", delay: 0.8, color: "#00ADD8" }, // Tambahan framework Go
+  { label: "Gin/Fiber", x: "65%", y: "55%", delay: 0.8, color: "#00ADD8" },
   { label: "Node.js", x: "75%", y: "75%", delay: 1, color: "#339933" },
   { label: "Postgres", x: "90%", y: "85%", delay: 1.5, color: "#4169E1" },
 ];
 
-// -- ROBOT ---
+// PERBAIKAN: Pindahkan socialData ke luar agar bisa diakses oleh HeroSection
+const socialLinks = [
+  { Icon: Github, url: "https://github.com/HaikalFrastiawan" },
+  { Icon: Linkedin, url: "https://www.linkedin.com/in/haikal-frastiawan-5b8287277/" },
+  { Icon: Mail, url: "mailto:haikalfrastiawan16@gmail.com" },
+  { Icon: MessageCircle, url: "https://wa.me/08136761485" },
+];
+
+// --- ROBOT HEAD ---
 const SittingRobotHead = ({ mousePos }) => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
@@ -62,6 +69,7 @@ const SittingRobotHead = ({ mousePos }) => {
   );
 };
 
+// --- FLOATING ICON ---
 const FloatingTechIcon = ({ tech, mousePos }) => {
   const iconRef = useRef(null);
   const avoidX = useSpring(0, { stiffness: 80, damping: 15 });
@@ -101,7 +109,7 @@ const FloatingTechIcon = ({ tech, mousePos }) => {
   );
 };
 
-// --- EFEK KETIK ---
+// --- TYPING EFFECT ---
 const TypingEffect = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [text, setText] = useState("");
@@ -148,9 +156,7 @@ const HeroSection = () => {
         className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
         style={{ background: `radial-gradient(750px at ${mousePos.x}px ${mousePos.y}px, rgba(34, 197, 94, 0.05), transparent 85%)` }}
       />
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-[1] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-      <div className="absolute inset-0 grid-bg opacity-20 z-0" />
-
+      
       <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
@@ -170,14 +176,24 @@ const HeroSection = () => {
               <a href="#projects" className="bg-primary text-black px-8 py-4 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">Explore Projects</a>
               <a href="#contact" className="border border-white/10 px-8 py-4 rounded-xl font-bold text-white hover:bg-white/10 transition-all">Contact Me</a>
             </div>
-            <div className="flex gap-4">
-              {[Github, Linkedin, Mail, MessageCircle].map((Icon, idx) => (
-                <a key={idx} href="#" className="p-3 rounded-xl border border-white/5 bg-white/[0.03] text-gray-500 hover:text-primary transition-all"><Icon size={20} /></a>
+
+            {/* PERBAIKAN: Menggunakan variabel socialLinks yang sudah di pindahkan ke luar */}
+            <div className="flex gap-4 relative z-50">
+              {socialLinks.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl border border-white/5 bg-white/[0.03] text-gray-400 hover:text-green-400 hover:border-green-400/50 transition-all duration-300 pointer-events-auto cursor-pointer"
+                >
+                  <item.Icon size={20} />
+                </a>
               ))}
             </div>
           </motion.div>
 
-          {/* TERMINAL - Menampilkan Framework Go dan Node */}
+          {/* TERMINAL SECTION */}
           <motion.div className="hidden lg:block relative h-[500px]">
             <div className="glass border border-white/10 rounded-2xl p-8 max-w-sm mx-auto shadow-2xl relative z-20 overflow-hidden">
               <div className="flex gap-2 mb-6">
@@ -192,7 +208,7 @@ const HeroSection = () => {
                   {"\n"}  node: <span className="text-orange-400">"NestJS"</span>,
                   {"\n"}  db: <span className="text-blue-400">"PostgreSQL"</span>,
                   {"\n"}  architecture: <span className="text-green-400">"Microservices"</span>,
-                  {"\n"}  scaling: <span className="text-green-400">"Docker & K8s"</span>
+                  {"\n"}  scaling: <span className="text-green-400">"Docker"</span>
                   {"\n"}{"}"};
                 </code>
               </pre>
