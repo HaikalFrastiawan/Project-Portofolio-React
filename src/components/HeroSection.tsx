@@ -2,20 +2,21 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useSpring } from "framer-motion";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 
+// Roles yang mencakup Go (Gin/Fiber), Node.js, dan NestJS
 const roles = [
-  "Backend Architecture Specialist", 
-  "Full Stack Web Engineer",      
-  "Golang & React Developer",      
-  "Building High-Performance APIs", 
-  "Database & System Designer",     
+  "Backend Engineering Specialist",
+  "Golang (Gin & Fiber) Developer",
+  "NestJS Framework Expert",
+  "Node.js Ecosystem Specialist",
+  "High-Performance API Architect",
 ];
 
 const techIconsData = [
-  { label: "React", x: "75%", y: "15%", delay: 0, color: "#61DAFB" },
-  { label: "Go", x: "85%", y: "40%", delay: 0.5, color: "#00ADD8" },
-  { label: "TS", x: "70%", y: "65%", delay: 1, color: "#3178C6" },
-  { label: "PG", x: "90%", y: "70%", delay: 1.5, color: "#4169E1" },
-  { label: "Node", x: "80%", y: "85%", delay: 2, color: "#339933" },
+  { label: "Golang", x: "75%", y: "15%", delay: 0, color: "#00ADD8" },
+  { label: "NestJS", x: "85%", y: "40%", delay: 0.5, color: "#E0234E" },
+  { label: "Gin/Fiber", x: "65%", y: "55%", delay: 0.8, color: "#00ADD8" }, // Tambahan framework Go
+  { label: "Node.js", x: "75%", y: "75%", delay: 1, color: "#339933" },
+  { label: "Postgres", x: "90%", y: "85%", delay: 1.5, color: "#4169E1" },
 ];
 
 // -- ROBOT ---
@@ -23,11 +24,11 @@ const SittingRobotHead = ({ mousePos }) => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const xVal = (mousePos.x - window.innerWidth / 3) / 35; 
+    const xVal = (mousePos.x - window.innerWidth / 3) / 35;
     const yVal = (mousePos.y - window.innerHeight / 3) / 35;
-    setRotation({ 
-      x: Math.max(Math.min(xVal, 20), -20), 
-      y: Math.max(Math.min(yVal, 20), -20) 
+    setRotation({
+      x: Math.max(Math.min(xVal, 20), -20),
+      y: Math.max(Math.min(yVal, 20), -20)
     });
   }, [mousePos]);
 
@@ -35,7 +36,7 @@ const SittingRobotHead = ({ mousePos }) => {
     <div className="flex flex-col items-center pointer-events-none mr-3">
       <motion.div
         animate={{ rotateY: rotation.x, rotateX: -rotation.y, y: [0, -2, 0] }}
-        transition={{ 
+        transition={{
           rotateY: { type: "spring", stiffness: 100, damping: 10 },
           rotateX: { type: "spring", stiffness: 100, damping: 10 },
           y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
@@ -44,15 +45,15 @@ const SittingRobotHead = ({ mousePos }) => {
       >
         <div className="w-[85%] h-[75%] bg-black rounded-lg flex items-center justify-center overflow-hidden relative border border-white/5">
           <div className="flex gap-1.5 relative z-10">
-            <motion.div 
+            <motion.div
               animate={{ x: rotation.x / 4, y: rotation.y / 4, scaleY: [1, 1, 0.1, 1] }}
               transition={{ x: { type: "spring", stiffness: 150 }, scaleY: { duration: 4, repeat: Infinity, times: [0, 0.9, 0.95, 1] } }}
-              className="w-1.5 h-2.5 bg-primary rounded-full shadow-[0_0_8px_#22c55e]" 
+              className="w-1.5 h-2.5 bg-primary rounded-full shadow-[0_0_8px_#22c55e]"
             />
-            <motion.div 
+            <motion.div
               animate={{ x: rotation.x / 4, y: rotation.y / 4, scaleY: [1, 1, 0.1, 1] }}
               transition={{ x: { type: "spring", stiffness: 150 }, scaleY: { duration: 4, repeat: Infinity, times: [0, 0.9, 0.95, 1] } }}
-              className="w-1.5 h-2.5 bg-primary rounded-full shadow-[0_0_8px_#22c55e]" 
+              className="w-1.5 h-2.5 bg-primary rounded-full shadow-[0_0_8px_#22c55e]"
             />
           </div>
         </div>
@@ -60,7 +61,6 @@ const SittingRobotHead = ({ mousePos }) => {
     </div>
   );
 };
-
 
 const FloatingTechIcon = ({ tech, mousePos }) => {
   const iconRef = useRef(null);
@@ -75,11 +75,11 @@ const FloatingTechIcon = ({ tech, mousePos }) => {
       const dx = mousePos.x - iconCenterX;
       const dy = mousePos.y - iconCenterY;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      const radius = 120; 
+      const radius = 120;
 
       if (distance < radius) {
         const force = (radius - distance) / radius;
-        avoidX.set((dx / distance) * -60 * force); 
+        avoidX.set((dx / distance) * -60 * force);
         avoidY.set((dy / distance) * -60 * force);
       } else {
         avoidX.set(0);
@@ -140,11 +140,11 @@ const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   return (
-    <section 
+    <section
       onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
       className="min-h-screen flex items-center relative overflow-hidden pt-20 bg-[#0a0a0a] selection:bg-primary/30"
     >
-      <div 
+      <div
         className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
         style={{ background: `radial-gradient(750px at ${mousePos.x}px ${mousePos.y}px, rgba(34, 197, 94, 0.05), transparent 85%)` }}
       />
@@ -153,7 +153,7 @@ const HeroSection = () => {
 
       <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+
           <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center mb-4">
               <SittingRobotHead mousePos={mousePos} />
@@ -164,10 +164,10 @@ const HeroSection = () => {
             </h1>
             <div className="h-10 mb-8"><TypingEffect /></div>
             <p className="text-gray-400 font-medium text-base md:text-lg max-w-md mb-10 leading-relaxed italic border-l-2 border-primary/20 pl-4">
-              "Building robust, scalable systems from database to interface. Focused on <span className="text-white">clean architecture</span>."
+              "Architecting high-performance systems with <span className="text-white">Go (Gin/Fiber)</span> and <span className="text-white">NestJS</span>. Dedicated to scalable backend solutions."
             </p>
             <div className="flex flex-wrap gap-5 mb-12">
-              <a href="#projects" className="bg-primary text-black px-8 py-4 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">View Projects</a>
+              <a href="#projects" className="bg-primary text-black px-8 py-4 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">Explore Projects</a>
               <a href="#contact" className="border border-white/10 px-8 py-4 rounded-xl font-bold text-white hover:bg-white/10 transition-all">Contact Me</a>
             </div>
             <div className="flex gap-4">
@@ -177,7 +177,7 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* TERMINAL */}
+          {/* TERMINAL - Menampilkan Framework Go dan Node */}
           <motion.div className="hidden lg:block relative h-[500px]">
             <div className="glass border border-white/10 rounded-2xl p-8 max-w-sm mx-auto shadow-2xl relative z-20 overflow-hidden">
               <div className="flex gap-2 mb-6">
@@ -187,15 +187,12 @@ const HeroSection = () => {
               </div>
               <pre className="font-mono text-xs md:text-sm leading-relaxed text-gray-300">
                 <code>
-                  <span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = {"{"}
-                  {"\n"}  name: <span className="text-green-400">"Haikal"</span>,
-                  {"\n"}  role: <span className="text-green-400">"FullStack Developer"</span>,
-                  {"\n"}  uptime: <span className="text-green-400">"99.9%"</span>,
-                  {"\n"}  skills: [
-                  {"\n"}    <span className="text-orange-400">"Go"</span>, <span className="text-blue-400">"React"</span>,
-                  {"\n"}    <span className="text-yellow-400">"TS"</span>, <span className="text-blue-400">"PostgreSQL"</span>
-                  {"\n"}  ],
-                  {"\n"}  commitment: <span className="text-green-400">"Clean Code"</span>
+                  <span className="text-purple-400">const</span> <span className="text-blue-400">stack</span> = {"{"}
+                  {"\n"}  go: [<span className="text-green-400">"Gin"</span>, <span className="text-green-400">"Fiber"</span>],
+                  {"\n"}  node: <span className="text-orange-400">"NestJS"</span>,
+                  {"\n"}  db: <span className="text-blue-400">"PostgreSQL"</span>,
+                  {"\n"}  architecture: <span className="text-green-400">"Microservices"</span>,
+                  {"\n"}  scaling: <span className="text-green-400">"Docker & K8s"</span>
                   {"\n"}{"}"};
                 </code>
               </pre>

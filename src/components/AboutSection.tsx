@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Globe, Server } from "lucide-react";
+import { Code2, Database, Layout, Server, ShieldCheck, Zap } from "lucide-react";
 
 const focusAreas = [
-  { icon: Globe, title: "Frontend Development", desc: "Crafting responsive, performant UIs with React & Next.js" },
-  { icon: Server, title: "Backend Development", desc: "Building robust APIs with Golang and Node.Js" },
-  { icon: Code2, title: "API Development", desc: "Designing RESTful and GraphQL APIs at scale" },
-  { icon: Database, title: "Database Design", desc: "Modeling data with PostgreSQL and MongoDB" },
+  { icon: Server, title: "Server-Side Logic", desc: "Building scalable backend systems using Golang and Node.js" },
+  { icon: Database, title: "Database Management", desc: "Designing efficient schemas with PostgreSQL and MongoDB" },
+  { icon: Code2, title: "API Architecture", desc: "Developing robust RESTful and gRPC services" },
+  { icon: ShieldCheck, title: "System Security", desc: "Implementing secure authentication and data protection" },
 ];
 
 const AboutSection = () => {
@@ -27,15 +27,13 @@ const AboutSection = () => {
 
           <div className="glass-card rounded-xl p-8 md:p-12 mb-12">
             <p className="text-foreground font-body text-base md:text-lg leading-relaxed mb-6">
-              I'm <span className="text-primary font-medium">Haikal Frastiawan</span> an Informatics student with a strong interest in software development and modern web technologies. I enjoy learning how applications work behind the scenes and how different parts of a system connect with each other.
-
+              I'm <span className="text-primary font-medium">Haikal Frastiawan</span>, an Informatics student dedicated to mastering the core of web ecosystems: <span className="italic">the Backend</span>. I have a deep fascination with how complex systems handle data, manage high traffic, and maintain seamless communication between services.
             </p>
             <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed mb-6">
-            Currently, I'm focusing on building my skills as a full-stack developer. I'm learning backend development using Go and Node.js, working with databases like PostgreSQL and MongoDB, and developing frontend interfaces with React and modern JavaScript.
-
+              Currently, I am sharpening my expertise in Backend Engineering, focusing on building high-performance services using Golang and Node.js. I specialize in designing structured databases with PostgreSQL, caching strategies, and ensuring that every API I build is not only functional but also scalable and secure.
             </p>
             <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed">
-            I enjoy building real projects to improve my problem-solving skills, writing clean and maintainable code, and continuously exploring better ways to design scalable and reliable systems.
+              I believe that a great application starts with a solid foundation. That’s why I’m committed to writing clean, maintainable code and exploring advanced topics like microservices, system design, and cloud infrastructure.
             </p>
           </div>
 
