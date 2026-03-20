@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useSpring } from "framer-motion";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
 
 const roles = [
   "Backend Engineering Specialist",
@@ -146,6 +147,7 @@ const TypingEffect = () => {
 // --- HERO SECTION ---
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const { t } = useTranslation();
 
   return (
     <section
@@ -163,19 +165,19 @@ const HeroSection = () => {
           <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center mb-4">
               <SittingRobotHead mousePos={mousePos} />
-              <p className="font-mono text-sm text-primary/70 tracking-[0.3em] uppercase">{" Hi there, I'm"}</p>
+              <p className="font-mono text-sm text-primary/70 tracking-[0.3em] uppercase"> {t("hero.greeting")}</p>
             </div>
             <h1 className="text-6xl md:text-8xl font-bold leading-tight text-white tracking-tighter mb-4">
               Haikal<br /><span className="text-primary drop-shadow-[0_0_20px_rgba(34,197,94,0.4)]">Frastiawan</span>
             </h1>
             <div className="h-10 mb-8"><TypingEffect /></div>
             <p className="text-gray-400 font-medium text-base md:text-lg max-w-md mb-10 leading-relaxed italic border-l-2 border-primary/20 pl-4">
-              "Architecting high-performance systems with <span className="text-white">Go (Gin/Fiber)</span> and <span className="text-white">NestJS</span>. Dedicated to scalable backend solutions."
+              {t("hero.desc")}
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-12 relative z-50">
-              <a href="#projects" className="flex-1 sm:flex-none flex items-center justify-center bg-primary text-black px-6 py-3.5 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] text-sm">Explore Projects</a>
-              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none flex items-center justify-center bg-white/10 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all text-sm">Download CV</a>
-              <a href="#contact" className="flex-1 sm:flex-none flex items-center justify-center border border-white/10 px-6 py-3.5 rounded-xl font-bold text-white hover:bg-white/10 transition-all text-sm">Contact Me</a>
+              <a href="#projects" className="flex-1 sm:flex-none flex items-center justify-center bg-primary text-black px-6 py-3.5 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] text-sm">{t("hero.explore")}</a>
+              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none flex items-center justify-center bg-white/10 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all text-sm">{t("hero.cv")}</a>
+              <a href="#contact" className="flex-1 sm:flex-none flex items-center justify-center border border-white/10 px-6 py-3.5 rounded-xl font-bold text-white hover:bg-white/10 transition-all text-sm">{t("hero.contact")}</a>
             </div>
 
             {/* PERBAIKAN: Menggunakan variabel socialLinks yang sudah di pindahkan ke luar */}

@@ -2,10 +2,12 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
+import ApiPlayground from "@/components/ApiPlayground";
 import ProjectsSection from "@/components/ProjectsSection";
 import GitHubSection from "@/components/GitHubSection";
 import JourneySection from "@/components/JourneySection";
 import Certifications from "@/components/CertificatesSection";
+import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
@@ -16,10 +18,12 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <SkillsSection />
+      <ApiPlayground />
       <ProjectsSection />
       <GitHubSection />
-      <JourneySection /> 
+      <JourneySection />
       <Certifications />
+      <BlogSection />
       <ContactSection />
       <WhatsAppFloat />
     </main>

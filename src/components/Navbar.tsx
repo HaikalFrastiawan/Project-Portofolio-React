@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
+import ServerStatus from "./ServerStatus";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "GitHub", href: "#github" },
-  { label: "Journey", href: "#journey" },
-  { label: "Certificates", href: "#certificates" },
-  { label: "Contact", href: "#contact" },
+  { labelKey: "nav.about", href: "#about" },
+  { labelKey: "nav.skills", href: "#skills" },
+  { labelKey: "nav.projects", href: "#projects" },
+  { labelKey: "nav.github", href: "#github" },
+  { labelKey: "nav.journey", href: "#journey" },
+  { labelKey: "nav.certificates", href: "#certificates" },
+  { labelKey: "nav.contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { t, language, setLanguage } = useTranslation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -73,7 +76,7 @@ const Navbar = () => {
                 className={`text-sm font-medium transition-all duration-300 relative px-1 ${isActive ? "text-primary scale-110" : "text-muted-foreground hover:text-primary/80"
                   }`}
               >
-                {item.label}
+                {t(item.labelKey)}
                 {/* animasi  aktif */}
                 {isActive && (
                   <motion.div
@@ -85,16 +88,27 @@ const Navbar = () => {
               </a>
             );
           })}
+          <div className="ml-4 border-l border-white/10 pl-4 h-6 flex items-center gap-4">
+            <button onClick={() => setLanguage(language === "en" ? "id" : "en")} className="flex items-center gap-1 text-sm font-mono text-muted-foreground hover:text-primary transition-colors">
+              <Globe size={16} /> {language.toUpperCase()}
+            </button>
+            <ServerStatus />
+          </div>
         </div>
 
         {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <button onClick={() => setLanguage(language === "en" ? "id" : "en")} className="flex items-center gap-1 text-sm font-mono text-muted-foreground hover:text-primary transition-colors">
+            <Globe size={18} /> {language.toUpperCase()}
+          </button>
+          <button
+            className="text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -114,9 +128,12 @@ const Navbar = () => {
                   onClick={() => setMobileOpen(false)}
                   className="text-sm font-body text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </a>
               ))}
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <ServerStatus />
+              </div>
             </div>
           </motion.div>
         )}

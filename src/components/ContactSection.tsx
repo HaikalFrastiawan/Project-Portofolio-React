@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Github, Linkedin, Mail, MessageCircle, Send } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
 
 const ContactSection = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
@@ -51,13 +53,12 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-sm text-primary mb-2">{"// get in touch"}</p>
+          <p className="font-mono text-sm text-primary mb-2">{t("contact.badge")}</p>
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Let's Build Something
+            {t("contact.title")}
           </h2>
           <p className="text-muted-foreground font-body mb-12 max-w-md">
-            If you'd like to collaborate, discuss a project, or just connect, feel free to send me a message.
-            I'm always open to learning opportunities and interesting ideas.
+            {t("contact.desc")}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -66,7 +67,7 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="text-xs font-mono text-muted-foreground tracking-wider uppercase block mb-2">
-                    Name
+                    {t("contact.name")}
                   </label>
                   <input
                     type="text"
@@ -80,7 +81,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <label className="text-xs font-mono text-muted-foreground tracking-wider uppercase block mb-2">
-                    Email
+                    {t("contact.email")}
                   </label>
                   <input
                     type="email"
@@ -94,7 +95,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <label className="text-xs font-mono text-muted-foreground tracking-wider uppercase block mb-2">
-                    Message
+                    {t("contact.message")}
                   </label>
                   <textarea
                     required
@@ -112,10 +113,10 @@ const ContactSection = () => {
                   className={`bg-primary text-primary-foreground px-6 py-3 rounded-lg font-body font-medium text-sm hover:opacity-90 transition-all w-full flex items-center justify-center gap-2 glow-border ${status === "sending" ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   <Send size={16} />
-                  {status === "idle" && "Send Message"}
-                  {status === "sending" && "Sending..."}
-                  {status === "success" && "Message Sent!"}
-                  {status === "error" && "Error! Try again"}
+                  {status === "idle" && t("contact.send")}
+                  {status === "sending" && t("contact.sending")}
+                  {status === "success" && t("contact.sent")}
+                  {status === "error" && t("contact.error")}
                 </button>
               </form>
             </div>
@@ -123,7 +124,7 @@ const ContactSection = () => {
             <div className="glass-card rounded-xl p-8 flex flex-col justify-between">
               <div>
                 <h3 className="font-heading font-semibold text-sm text-primary tracking-wider uppercase mb-8">
-                  Quick Contact
+                  {t("contact.quick")}
                 </h3>
                 <div className="space-y-5">
                   {[

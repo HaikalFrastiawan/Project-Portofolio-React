@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Code2, Database, Server } from "lucide-react";
+import { ExternalLink, Github, Code2, Database, Server, GitMerge } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface Project {
   title: string;
@@ -41,6 +50,8 @@ const projects: Project[] = [
 ];
 
 const ProjectsSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="projects" className="py-24 px-6 bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto w-full">
@@ -52,12 +63,12 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-sm text-primary mb-2">{"// personal_labs"}</p>
+          <p className="font-mono text-sm text-primary mb-2">{t("projects.badge")}</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-            Featured Projects
+            {t("projects.title")}
           </h2>
           <p className="text-gray-400 mb-12 max-w-2xl italic">
-            "A collection of technical explorations and systems I am currently developing to deepen my expertise in backend architecture."
+            {t("projects.desc")}
           </p>
         </motion.div>
 
@@ -98,11 +109,52 @@ const ProjectsSection = () => {
                 </div>
 
                 <div className="flex gap-3">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        title={t("projects.arch")}
+                        className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-primary hover:bg-primary/10 transition-all cursor-pointer"
+                      >
+                        <GitMerge size={20} />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="bg-[#0b0f19] border-white/10 text-white sm:max-w-2xl overflow-hidden p-6">
+                      <DialogHeader>
+                        <DialogTitle>{project.title} Architecture</DialogTitle>
+                        <DialogDescription className="text-gray-400">
+                          High-level system design and data flow for this backend service.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="mt-4 border border-white/10 rounded-xl bg-black/50 p-6 flex flex-col items-center justify-center min-h-[300px]">
+                        <div className="text-center space-y-4 text-gray-400 font-mono text-sm w-full">
+                          <div className="flex items-center justify-center gap-2 w-full">
+                            <div className="border border-green-500/30 bg-green-500/10 px-4 py-2 rounded">Client</div>
+                            <div className="w-8 h-px bg-white/20"></div>
+                            <div className="border border-blue-500/30 bg-blue-500/10 px-4 py-2 rounded text-blue-400">API Gateway</div>
+                          </div>
+                          <div className="w-px h-8 bg-white/20 mx-auto"></div>
+                          <div className="flex justify-center gap-8 w-full">
+                            <div className="border border-purple-500/30 bg-purple-500/10 px-4 py-2 rounded text-purple-400">Auth Service</div>
+                            <div className="border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 rounded text-yellow-400">Core Service</div>
+                          </div>
+                          <div className="flex justify-center gap-[110px] w-full pt-1">
+                            <div className="w-px h-8 bg-white/20"></div>
+                            <div className="w-px h-8 bg-white/20"></div>
+                          </div>
+                          <div className="flex justify-center gap-8 w-full">
+                            <div className="border border-gray-500/30 bg-gray-500/10 px-4 py-2 rounded flex items-center gap-2"><Database size={14} /> Redis</div>
+                            <div className="border border-teal-500/30 bg-teal-500/10 px-4 py-2 rounded flex items-center gap-2 text-teal-400"><Database size={14} /> DB Master</div>
+                          </div>
+                          <p className="mt-8 text-xs italic text-gray-500 pt-4 border-t border-white/5">*This is a placeholder architecture diagram block. Update with actual image or detailed nodes later.</p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-primary hover:bg-primary/10 transition-all"
+                    className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-primary hover:bg-primary/10 transition-all cursor-pointer"
                   >
                     <Github size={20} />
                   </a>
