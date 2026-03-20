@@ -151,9 +151,16 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <p className="text-muted-foreground/40 font-body text-xs mt-8">
-                © {new Date().getFullYear()} Haikal Frastiawan
-              </p>
+              <div className="flex items-center justify-between mt-8 pt-4 border-t border-border/30">
+                <p className="text-muted-foreground/50 font-body text-xs">
+                  © {new Date().getFullYear()} Haikal Frastiawan
+                </p>
+                <img
+                  src="https://komarev.com/ghpvc/?username=haikalfrastiawan-portfolio&label=Profile%20views&color=0e75b6&style=flat"
+                  alt="Profile Views"
+                  className="h-5 opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </div>
             </div>
           </div>
         </motion.div>

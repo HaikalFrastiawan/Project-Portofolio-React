@@ -65,7 +65,9 @@
     font-family: var(--font-body);
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-heading);
   }
 }
@@ -116,8 +118,16 @@
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Gradient text */
@@ -130,8 +140,15 @@
 
 /* Neon letter animation */
 @keyframes letter-reveal {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .neon-letter {
@@ -165,8 +182,15 @@
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
 }
 
 .animate-float {
@@ -175,8 +199,15 @@
 
 /* Fade up */
 @keyframes fade-up {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-up {
@@ -185,8 +216,15 @@
 
 /* Pulse glow */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px hsl(142 71% 45% / 0.2); }
-  50% { box-shadow: 0 0 20px hsl(142 71% 45% / 0.4); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px hsl(142 71% 45% / 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 20px hsl(142 71% 45% / 0.4);
+  }
 }
 
 .pulse-glow {
@@ -197,11 +235,13 @@
 ::-webkit-scrollbar {
   width: 4px;
 }
+
 ::-webkit-scrollbar-track {
-  background: hsl(220 15% 5%);
+  background: hsl(var(--background));
 }
+
 ::-webkit-scrollbar-thumb {
-  background: hsl(142 71% 45% / 0.3);
+  background: hsl(var(--primary) / 0.3);
   border-radius: 4px;
 }
 

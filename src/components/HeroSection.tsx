@@ -156,7 +156,7 @@ const HeroSection = () => {
         className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
         style={{ background: `radial-gradient(750px at ${mousePos.x}px ${mousePos.y}px, rgba(34, 197, 94, 0.05), transparent 85%)` }}
       />
-      
+
       <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
@@ -172,9 +172,10 @@ const HeroSection = () => {
             <p className="text-gray-400 font-medium text-base md:text-lg max-w-md mb-10 leading-relaxed italic border-l-2 border-primary/20 pl-4">
               "Architecting high-performance systems with <span className="text-white">Go (Gin/Fiber)</span> and <span className="text-white">NestJS</span>. Dedicated to scalable backend solutions."
             </p>
-            <div className="flex flex-wrap gap-5 mb-12">
-              <a href="#projects" className="bg-primary text-black px-8 py-4 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">Explore Projects</a>
-              <a href="#contact" className="border border-white/10 px-8 py-4 rounded-xl font-bold text-white hover:bg-white/10 transition-all">Contact Me</a>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-12 relative z-50">
+              <a href="#projects" className="flex-1 sm:flex-none flex items-center justify-center bg-primary text-black px-6 py-3.5 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] text-sm">Explore Projects</a>
+              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none flex items-center justify-center bg-white/10 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all text-sm">Download CV</a>
+              <a href="#contact" className="flex-1 sm:flex-none flex items-center justify-center border border-white/10 px-6 py-3.5 rounded-xl font-bold text-white hover:bg-white/10 transition-all text-sm">Contact Me</a>
             </div>
 
             {/* PERBAIKAN: Menggunakan variabel socialLinks yang sudah di pindahkan ke luar */}
