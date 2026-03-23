@@ -1,5 +1,6 @@
 import { useRef, ReactNode } from "react";
 import { motion, useSpring } from "framer-motion";
+import { useSoundEffect } from "@/hooks/useSoundEffect";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -9,6 +10,7 @@ interface MagneticButtonProps {
 
 export default function MagneticButton({ children, className = "", sensitivity = 0.2 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const { playHover, playClick } = useSoundEffect();
 
   const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
   const x = useSpring(0, springConfig);
@@ -34,6 +36,8 @@ export default function MagneticButton({ children, className = "", sensitivity =
       style={{ position: "relative", x, y, zIndex: 50 }}
       ref={ref}
       onMouseMove={handleMouse}
+      onMouseEnter={playHover}
+      onClick={playClick}
       onMouseLeave={reset}
       className={`inline-block w-full sm:w-auto ${className}`}
     >

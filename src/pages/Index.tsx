@@ -15,6 +15,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import InteractiveTerminal from "@/components/InteractiveTerminal";
 import SplashScreen from "@/components/SplashScreen";
 import BackgroundOrbs from "@/components/BackgroundOrbs";
+import HackerMode from "@/components/HackerMode";
 
 const Index = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -31,6 +32,7 @@ const Index = () => {
   return (
     <>
       <BackgroundOrbs />
+      <HackerMode />
       <AnimatePresence mode="wait">
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} key="splash" />}
       </AnimatePresence>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Github, Linkedin, Mail, MessageCircle, Send } from "lucide-react";
 import { useTranslation } from "@/context/TranslationContext";
+import VisitorCounter from "@/components/VisitorCounter";
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -156,11 +157,7 @@ const ContactSection = () => {
                 <p className="text-muted-foreground/50 font-body text-xs">
                   © {new Date().getFullYear()} Haikal Frastiawan
                 </p>
-                <img
-                  src="https://komarev.com/ghpvc/?username=haikalfrastiawan-portfolio&label=Profile%20views&color=0e75b6&style=flat"
-                  alt="Profile Views"
-                  className="h-5 opacity-80 hover:opacity-100 transition-opacity"
-                />
+                <VisitorCounter />
               </div>
             </div>
           </div>
