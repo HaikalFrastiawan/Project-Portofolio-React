@@ -110,6 +110,72 @@ const FloatingTechIcon = ({ tech, mousePos }) => {
   );
 };
 
+// --- 3D TERMINAL CARD ---
+const Terminal3DCard = ({ mousePos }: { mousePos: { x: number, y: number } }) => {
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1000;
+    const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+    
+    const xVal = ((mousePos.x - windowWidth / 2) / windowWidth) * 30; 
+    const yVal = ((mousePos.y - windowHeight / 2) / windowHeight) * 30;
+
+    setRotation({
+      x: -yVal, 
+      y: xVal
+    });
+  }, [mousePos]);
+
+  return (
+    <motion.div
+      className="relative w-full max-w-sm mx-auto z-20 h-[300px] flex items-center justify-center pointer-events-none mt-10"
+      style={{ perspective: 1000 }}
+    >
+      <motion.div 
+        animate={{ 
+          rotateX: rotation.x, 
+          rotateY: rotation.y,
+          y: [0, -10, 0]
+        }}
+        transition={{ 
+          rotateX: { type: "spring", stiffness: 100, damping: 30, mass: 0.5 },
+          rotateY: { type: "spring", stiffness: 100, damping: 30, mass: 0.5 },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+        }}
+        className="glass border border-white/20 rounded-2xl p-8 shadow-[0_0_40px_rgba(0,173,216,0.15)] relative w-full transform-gpu bg-[#0a0a0a]/80 backdrop-blur-xl"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        <div className="flex gap-2 mb-6" style={{ transform: "translateZ(30px)" }}>
+          <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-[0_0_10px_rgba(255,95,86,0.6)]" />
+          <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[0_0_10px_rgba(255,189,46,0.6)]" />
+          <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-[0_0_10px_rgba(39,201,63,0.6)]" />
+        </div>
+        
+        <pre 
+          className="font-mono text-xs md:text-sm leading-relaxed text-gray-300"
+          style={{ transform: "translateZ(50px)" }}
+        >
+          <code>
+            <span className="text-purple-400">const</span> <span className="text-blue-400">stack</span> = {"{"}
+            {"\n"}  go: [<span className="text-green-400">"Gin"</span>, <span className="text-green-400">"Fiber"</span>],
+            {"\n"}  node: <span className="text-orange-400">"NestJS"</span>,
+            {"\n"}  db: <span className="text-blue-400">"PostgreSQL"</span>,
+            {"\n"}  architecture: <span className="text-green-400">"Microservices"</span>,
+            {"\n"}  scaling: <span className="text-green-400">"Docker"</span>
+            {"\n"}{"}"};
+          </code>
+        </pre>
+        
+        <div 
+          className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent rounded-2xl pointer-events-none"
+          style={{ transform: "translateZ(20px)" }}
+        />
+      </motion.div>
+    </motion.div>
+  );
+};
+
 // --- TYPING EFFECT ---
 const TypingEffect = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -197,25 +263,8 @@ const HeroSection = () => {
           </motion.div>
 
           {/* TERMINAL SECTION */}
-          <motion.div className="hidden lg:block relative h-[500px]">
-            <div className="glass border border-white/10 rounded-2xl p-8 max-w-sm mx-auto shadow-2xl relative z-20 overflow-hidden">
-              <div className="flex gap-2 mb-6">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-              </div>
-              <pre className="font-mono text-xs md:text-sm leading-relaxed text-gray-300">
-                <code>
-                  <span className="text-purple-400">const</span> <span className="text-blue-400">stack</span> = {"{"}
-                  {"\n"}  go: [<span className="text-green-400">"Gin"</span>, <span className="text-green-400">"Fiber"</span>],
-                  {"\n"}  node: <span className="text-orange-400">"NestJS"</span>,
-                  {"\n"}  db: <span className="text-blue-400">"PostgreSQL"</span>,
-                  {"\n"}  architecture: <span className="text-green-400">"Microservices"</span>,
-                  {"\n"}  scaling: <span className="text-green-400">"Docker"</span>
-                  {"\n"}{"}"};
-                </code>
-              </pre>
-            </div>
+          <motion.div className="hidden lg:block relative h-[500px] perspective-[1000px]">
+            <Terminal3DCard mousePos={mousePos} />
             {techIconsData.map((tech) => (
               <FloatingTechIcon key={tech.label} tech={tech} mousePos={mousePos} />
             ))}
