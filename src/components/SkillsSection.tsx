@@ -52,43 +52,46 @@ const SkillsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {categories.map((cat, catIdx) => (
-            <motion.div
-              key={cat.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-              viewport={{ once: true }}
-              className="relative p-8 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-sm group hover:border-primary/30 transition-all duration-500"
-            >
-              <h3 className="flex items-center gap-3 font-bold text-lg text-white mb-8 tracking-wide">
-                <span className="p-2 rounded-lg bg-primary/10 text-primary">
-                  {cat.icon}
-                </span>
-                {cat.title}
-              </h3>
+        <div className="flex flex-col gap-12 overflow-hidden py-10 w-full">
+          {categories.map((cat, catIdx) => {
+            const isEven = catIdx % 2 === 0;
+            return (
+              <div key={cat.title} className="relative w-full flex flex-col group/marquee">
+                <div className="flex items-center gap-3 mb-6 px-6 max-w-6xl mx-auto w-full z-10">
+                  <span className="p-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20">
+                    {cat.icon}
+                  </span>
+                  <h3 className="font-bold text-xl text-white tracking-wide">
+                    {cat.title}
+                  </h3>
+                </div>
 
-              <div className="flex flex-wrap gap-3">
-                {cat.skills.map((skill) => (
+                {/* Marquee Container */}
+                <div className="flex overflow-hidden relative w-full [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                   <motion.div
-                    key={skill}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="px-4 py-2.5 rounded-xl border border-white/5 bg-white/[0.03] text-gray-300 text-sm font-medium hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all flex items-center gap-3 group/item"
+                    animate={{ x: isEven ? ["0%", "-50%"] : ["-50%", "0%"] }}
+                    transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+                    className="flex whitespace-nowrap gap-6 shrink-0 w-max px-3"
                   >
-
-                    <img 
-                      src={`https://cdn.simpleicons.org/${skill.toLowerCase().replace(' ', '').replace('.', 'dot')}`} 
-                      className="w-5 h-5 object-contain brightness group-hover/item:opacity-100 group-hover/item:brightness-100 transition-all"
-                      alt={skill} 
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }} 
-                    />
-                    {skill}
+                    {[...cat.skills, ...cat.skills, ...cat.skills, ...cat.skills].map((skill, i) => (
+                      <div
+                        key={`${skill}-${i}`}
+                        className="px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md text-gray-300 font-medium hover:bg-primary/10 hover:text-white hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] hover:border-primary/40 transition-all flex items-center gap-4 group/item shrink-0 cursor-pointer"
+                      >
+                        <img 
+                          src={`https://cdn.simpleicons.org/${skill.toLowerCase().replace(' ', '').replace('.', 'dot')}`} 
+                          className="w-8 h-8 object-contain opacity-50 group-hover/item:opacity-100 transition-all drop-shadow-md"
+                          alt={skill} 
+                          onError={(e) => { e.currentTarget.style.display = 'none'; }} 
+                        />
+                        <span className="text-lg tracking-wide">{skill}</span>
+                      </div>
+                    ))}
                   </motion.div>
-                ))}
+                </div>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

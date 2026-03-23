@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useSpring } from "framer-motion";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { useTranslation } from "@/context/TranslationContext";
+import MagneticButton from "@/components/MagneticButton";
 
 const roles = [
   "Backend Engineering Specialist",
@@ -241,9 +242,15 @@ const HeroSection = () => {
               {t("hero.desc")}
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-12 relative z-50">
-              <a href="#projects" className="flex-1 sm:flex-none flex items-center justify-center bg-primary text-black px-6 py-3.5 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] text-sm">{t("hero.explore")}</a>
-              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none flex items-center justify-center bg-white/10 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all text-sm">{t("hero.cv")}</a>
-              <a href="#contact" className="flex-1 sm:flex-none flex items-center justify-center border border-white/10 px-6 py-3.5 rounded-xl font-bold text-white hover:bg-white/10 transition-all text-sm">{t("hero.contact")}</a>
+              <MagneticButton className="flex-1 sm:flex-none">
+                <a href="#projects" className="w-full flex items-center justify-center bg-primary text-black px-6 py-3.5 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] text-sm">{t("hero.explore")}</a>
+              </MagneticButton>
+              <MagneticButton className="flex-1 sm:flex-none">
+                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-white/10 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all text-sm">{t("hero.cv")}</a>
+              </MagneticButton>
+              <MagneticButton className="flex-1 sm:flex-none">
+                <a href="#contact" className="w-full flex items-center justify-center border border-white/10 px-6 py-3.5 rounded-xl font-bold text-white hover:bg-white/10 transition-all text-sm">{t("hero.contact")}</a>
+              </MagneticButton>
             </div>
 
             {/* PERBAIKAN: Menggunakan variabel socialLinks yang sudah di pindahkan ke luar */}
