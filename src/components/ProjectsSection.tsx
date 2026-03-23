@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Code2, Database, Server, GitMerge } from "lucide-react";
+import { ExternalLink, Github, Code2, Database, Server, GitMerge, Monitor } from "lucide-react";
 import { useTranslation } from "@/context/TranslationContext";
 import {
   Dialog,
@@ -37,6 +37,15 @@ const projects: Project[] = [
     github: "https://github.com/HaikalFrastiawan/Project-Marketplace-nest.git",
     status: "In Progress",
     icon: <Code2 className="text-primary" size={24} />,
+  },
+  {
+    title: "AnimeList Web App",
+    description:
+      "A modern web application to browse, search, and track anime. Built with Next.js to leverage Server-Side Rendering (SSR) and Server Components for optimal performance.",
+    stack: ["Next.js", "React", "TailwindCSS", "API Integration"],
+    github: "https://github.com/HaikalFrastiawan/AnimeList-Next-js.git",
+    status: "Completed",
+    icon: <Monitor className="text-primary" size={24} />,
   },
   {
     title: "Scalable Database Schema Design",

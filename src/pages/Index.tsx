@@ -10,6 +10,7 @@ import Certifications from "@/components/CertificatesSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import InteractiveTerminal from "@/components/InteractiveTerminal";
 
 const Index = () => {
   return (
@@ -26,8 +27,10 @@ const Index = () => {
       <BlogSection />
       <ContactSection />
       <WhatsAppFloat />
+      <InteractiveTerminal />
     </main>
   );
 };
 
 export default Index;
+
