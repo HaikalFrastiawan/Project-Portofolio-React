@@ -15,12 +15,22 @@ interface Project {
   title: string;
   description: string;
   stack: string[];
-  github: string;
+  github?: string;
+  demo?: string;
   status: "In Progress" | "Concept" | "Completed";
   icon: any;
 }
 
 const projects: Project[] = [
+  {
+    title: "ElektroServ Platform",
+    description:
+      "A comprehensive SaaS booking service for electronic repairs and management. Fully deployed with dynamic routing and custom database integrations.",
+    stack: ["React", "Go", "Neon", "Railway", "Vercel"],
+    demo: "https://electronic-service-five.vercel.app/",
+    status: "Completed",
+    icon: <Monitor className="text-primary" size={24} />,
+  },
   {
     title: "High-Performance Go API",
     description:
@@ -161,14 +171,26 @@ const ProjectsSection = () => {
                         </div>
                       </DialogContent>
                     </Dialog>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-primary hover:bg-primary/10 transition-all cursor-pointer relative z-20"
-                    >
-                      <Github size={20} />
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-primary hover:bg-primary/10 transition-all cursor-pointer relative z-20"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-primary hover:bg-primary/10 transition-all cursor-pointer relative z-20"
+                      >
+                        <ExternalLink size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </SpotlightCard>
