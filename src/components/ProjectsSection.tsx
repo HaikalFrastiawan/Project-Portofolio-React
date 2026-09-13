@@ -124,32 +124,29 @@ const ProjectsSection = () => {
                           <GitMerge size={20} />
                         </button>
                       </DialogTrigger>
-                      <DialogContent className="bg-[#0b0f19] border-white/10 text-white sm:max-w-2xl overflow-hidden p-6 z-[99999]">
+                      <DialogContent className="bg-[#0b0f19] border-white/10 text-white w-[92vw] max-w-2xl max-h-[85vh] overflow-y-auto p-4 sm:p-6 z-[99999]">
                         <DialogHeader>
-                          <DialogTitle>{project.title} - {t("projects.arch_title")}</DialogTitle>
-                          <DialogDescription className="text-gray-400">
+                          <DialogTitle className="text-base sm:text-lg">{project.title} - {t("projects.arch_title")}</DialogTitle>
+                          <DialogDescription className="text-gray-400 text-xs sm:text-sm">
                             {t("projects.arch_desc")}
                           </DialogDescription>
                         </DialogHeader>
-                        <div className="mt-4 border border-white/10 rounded-xl bg-black/50 p-6 flex flex-col items-center justify-center min-h-[300px]">
-                          <div className="text-center space-y-4 text-gray-400 font-mono text-sm w-full">
+                        <div className="mt-4 border border-white/10 rounded-xl bg-black/50 p-4 sm:p-6 flex flex-col items-center justify-center min-h-[260px] overflow-x-auto">
+                          <div className="text-center space-y-3 sm:space-y-4 text-gray-400 font-mono text-xs sm:text-sm min-w-[280px]">
                             <div className="flex items-center justify-center gap-2 w-full">
-                              <div className="border border-green-500/30 bg-green-500/10 px-4 py-2 rounded">Client</div>
-                              <div className="w-8 h-px bg-white/20"></div>
-                              <div className="border border-blue-500/30 bg-blue-500/10 px-4 py-2 rounded text-blue-400">API Gateway</div>
+                              <div className="border border-green-500/30 bg-green-500/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded text-green-400">Client</div>
+                              <div className="w-6 sm:w-8 h-px bg-white/20"></div>
+                              <div className="border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded text-blue-400">API Gateway</div>
                             </div>
-                            <div className="w-px h-8 bg-white/20 mx-auto"></div>
-                            <div className="flex justify-center gap-8 w-full">
-                              <div className="border border-purple-500/30 bg-purple-500/10 px-4 py-2 rounded text-purple-400">Auth Service</div>
-                              <div className="border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 rounded text-yellow-400">Core Service</div>
+                            <div className="w-px h-6 sm:h-8 bg-white/20 mx-auto"></div>
+                            <div className="flex justify-center gap-3 sm:gap-8 w-full flex-wrap sm:flex-nowrap">
+                              <div className="border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded text-purple-400">Auth Service</div>
+                              <div className="border border-yellow-500/30 bg-yellow-500/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded text-yellow-400">Core Service</div>
                             </div>
-                            <div className="flex justify-center gap-[110px] w-full pt-1">
-                              <div className="w-px h-8 bg-white/20"></div>
-                              <div className="w-px h-8 bg-white/20"></div>
-                            </div>
-                            <div className="flex justify-center gap-8 w-full">
-                              <div className="border border-gray-500/30 bg-gray-500/10 px-4 py-2 rounded flex items-center gap-2"><Database size={14} /> Redis</div>
-                              <div className="border border-teal-500/30 bg-teal-500/10 px-4 py-2 rounded flex items-center gap-2 text-teal-400"><Database size={14} /> DB Master</div>
+                            <div className="w-px h-6 sm:h-8 bg-white/20 mx-auto"></div>
+                            <div className="flex justify-center gap-3 sm:gap-8 w-full flex-wrap sm:flex-nowrap">
+                              <div className="border border-gray-500/30 bg-gray-500/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded flex items-center gap-1.5"><Database size={14} /> Redis</div>
+                              <div className="border border-teal-500/30 bg-teal-500/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded flex items-center gap-1.5 text-teal-400"><Database size={14} /> DB Master</div>
                             </div>
                           </div>
                         </div>

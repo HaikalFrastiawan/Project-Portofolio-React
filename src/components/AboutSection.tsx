@@ -36,21 +36,21 @@ const AboutSection = () => {
             {t("about.title")}
           </h2>
 
-          <div className="glass-card rounded-xl p-8 md:p-12 mb-12 relative overflow-hidden group">
+          <div className="glass-card rounded-xl p-6 sm:p-8 md:p-12 mb-8 sm:mb-12 relative overflow-hidden group">
             <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-            <p className="text-foreground font-body text-base md:text-lg leading-relaxed mb-6 relative z-10">
+            <p className="text-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 relative z-10">
               {t("about.p1")}
             </p>
-            <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed mb-6 relative z-10">
+            <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 relative z-10">
               {t("about.p2")}
             </p>
-            <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed relative z-10">
+            <p className="text-muted-foreground font-body text-sm sm:text-base md:text-lg leading-relaxed relative z-10">
               {t("about.p3")}
             </p>
           </div>
 
           {/* Quick Stats Grid with Counters */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -58,17 +58,17 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-4 bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:border-primary/20 transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.1)]"
+                className="flex items-center gap-3 sm:gap-4 bg-white/[0.02] border border-white/5 p-4 sm:p-6 rounded-2xl hover:border-primary/20 transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.1)]"
               >
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <stat.icon className="text-primary w-5 h-5" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <stat.icon className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-2xl md:text-3xl font-bold text-white flex items-center shadow-black drop-shadow-md">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white flex items-center shadow-black drop-shadow-md">
                     <AnimatedCounter value={stat.value} />
                     <span className="text-primary ml-0.5">{stat.suffix}</span>
                   </div>
-                  <p className="text-xs md:text-sm text-gray-500 font-mono mt-1">{stat.label}</p>
+                  <p className="text-[10px] sm:text-xs md:text-sm text-gray-500 font-mono mt-0.5 sm:mt-1">{stat.label}</p>
                 </div>
               </motion.div>
             ))}

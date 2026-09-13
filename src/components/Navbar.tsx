@@ -118,20 +118,28 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border"
+            className="md:hidden glass border-t border-border/40 max-h-[80vh] overflow-y-auto"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm font-body text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t(item.labelKey)}
-                </a>
-              ))}
-              <div className="mt-4 pt-4 border-t border-white/10">
+            <div className="px-6 py-5 flex flex-col gap-2">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.substring(1);
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`text-base font-medium py-2.5 px-3 rounded-xl transition-all flex items-center justify-between ${
+                      isActive 
+                        ? "text-primary bg-primary/10 font-bold border border-primary/20" 
+                        : "text-muted-foreground hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    <span>{t(item.labelKey)}</span>
+                    {isActive && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
+                  </a>
+                );
+              })}
+              <div className="mt-2 pt-4 border-t border-white/10 flex items-center justify-between">
                 <ServerStatus />
               </div>
             </div>

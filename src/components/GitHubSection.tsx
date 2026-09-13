@@ -99,11 +99,11 @@ const GitHubSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-8 glass-card border border-white/5 rounded-3xl w-full"
+                className="p-4 sm:p-8 glass-card border border-white/5 rounded-2xl sm:rounded-3xl w-full"
               >
-                <div className="flex items-center gap-2 mb-8">
+                <div className="flex items-center gap-2 mb-4 sm:mb-8">
                   <Activity size={18} className="text-primary" />
-                  <span className="font-bold text-white uppercase tracking-wider text-sm">{t("github.activity")}</span>
+                  <span className="font-bold text-white uppercase tracking-wider text-xs sm:text-sm">{t("github.activity")}</span>
                 </div>
                 
                 <div className="flex justify-center w-full overflow-x-auto pb-4 custom-scrollbar">

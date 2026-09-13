@@ -71,8 +71,8 @@ const ContactSection = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Form */}
-            <div className="glass-card rounded-xl p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="glass-card rounded-xl p-5 sm:p-8">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
                   <label className="text-xs font-mono text-muted-foreground tracking-wider uppercase block mb-2">
                     {t("contact.name")}
@@ -129,34 +129,34 @@ const ContactSection = () => {
               </form>
             </div>
 
-            <div className="glass-card rounded-xl p-8 flex flex-col justify-between">
+            <div className="glass-card rounded-xl p-5 sm:p-8 flex flex-col justify-between">
               <div>
-                <h3 className="font-heading font-semibold text-sm text-primary tracking-wider uppercase mb-8">
+                <h3 className="font-heading font-semibold text-xs sm:text-sm text-primary tracking-wider uppercase mb-6 sm:mb-8">
                   {t("contact.quick")}
                 </h3>
-                <div className="space-y-5">
+                <div className="space-y-3 sm:space-y-5">
                   {quickLinks.map(({ icon: Icon, label, href, desc }) => (
                     <a
                       key={label}
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/30 transition-colors group"
+                      className="flex items-center gap-3 sm:gap-4 p-2.5 sm:p-3 rounded-lg hover:bg-muted/30 transition-colors group"
                     >
-                      <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors shrink-0">
                         <Icon size={18} />
                       </div>
-                      <div>
-                        <span className="font-body text-sm text-foreground block">{label}</span>
-                        <span className="font-body text-xs text-muted-foreground">{desc}</span>
+                      <div className="min-w-0">
+                        <span className="font-body text-xs sm:text-sm text-foreground block truncate">{label}</span>
+                        <span className="font-body text-[11px] sm:text-xs text-muted-foreground block truncate">{desc}</span>
                       </div>
                     </a>
                   ))}
                 </div>
               </div>
 
-              <div className="flex items-center justify-between mt-8 pt-4 border-t border-border/30">
-                <p className="text-muted-foreground/50 font-body text-xs">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-4 border-t border-border/30">
+                <p className="text-muted-foreground/50 font-body text-xs text-center sm:text-left">
                   © {new Date().getFullYear()} Haikal Frastiawan
                 </p>
                 <VisitorCounter />

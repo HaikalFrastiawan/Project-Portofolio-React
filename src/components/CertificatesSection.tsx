@@ -82,11 +82,11 @@ const Certifications = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-sm text-primary mb-2">{t("certificates.badge")}</p>
-          <h2 className="text-4xl font-heading font-bold mb-12 text-white">{t("certificates.title")}</h2>
+          <p className="font-mono text-xs sm:text-sm text-primary mb-2">{t("certificates.badge")}</p>
+          <h2 className="text-2xl sm:text-4xl font-heading font-bold mb-8 sm:mb-12 text-white">{t("certificates.title")}</h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
           {certificates.map((cert, index) => (
             <motion.a
               key={index}
@@ -97,17 +97,17 @@ const Certifications = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} 
               transition={{ delay: index * 0.05 }}
-              className="glass-card p-5 rounded-xl flex items-center justify-between border border-white/10 bg-white/5 hover:bg-white/10 hover:border-primary/40 transition-all group"
+              className="glass-card p-3.5 sm:p-5 rounded-xl flex items-center justify-between border border-white/10 bg-white/5 hover:bg-white/10 hover:border-primary/40 transition-all group"
             >
-              <div className="flex items-center gap-4 overflow-hidden">
-                <div className="flex-shrink-0 p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
-                  <Award size={22} />
+              <div className="flex items-center gap-3 sm:gap-4 overflow-hidden">
+                <div className="flex-shrink-0 p-2.5 sm:p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+                  <Award size={20} className="sm:w-5 sm:h-5" />
                 </div>
                 <div className="overflow-hidden">
-                  <h3 className="font-heading font-semibold text-white group-hover:text-primary transition-colors truncate">
+                  <h3 className="font-heading font-semibold text-sm sm:text-base text-white group-hover:text-primary transition-colors truncate">
                     {cert.title}
                   </h3>
-                  <p className="text-xs text-gray-400 truncate">
+                  <p className="text-[11px] sm:text-xs text-gray-400 truncate">
                     {cert.issuer} • {cert.date}
                   </p>
                 </div>

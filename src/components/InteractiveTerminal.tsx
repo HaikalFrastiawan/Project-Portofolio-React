@@ -128,10 +128,10 @@ export default function InteractiveTerminal() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-5 z-50 p-4 bg-black border border-green-500/30 text-green-400 rounded-full shadow-lg shadow-green-500/20 hover:bg-green-500/10 transition-colors backdrop-blur-sm"
+        className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-40 p-3.5 sm:p-4 bg-black border border-green-500/30 text-green-400 rounded-full shadow-lg shadow-green-500/20 hover:bg-green-500/10 transition-colors backdrop-blur-sm"
         title="Open CLI"
       >
-        <TerminalIcon size={24} />
+        <TerminalIcon size={22} className="sm:w-6 sm:h-6" />
       </motion.button>
 
       {/* Terminal Modal */}
@@ -142,10 +142,10 @@ export default function InteractiveTerminal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className={`fixed z-50 flex flex-col bg-[#0a0a0a]/95 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden font-mono text-sm transition-all duration-300 ${
+            className={`fixed z-50 flex flex-col bg-[#0a0a0a]/95 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden font-mono text-xs sm:text-sm transition-all duration-300 ${
               isMaximized
                 ? "inset-0 rounded-none border-0"
-                : "bottom-5 right-5 w-full max-w-[500px] h-[400px] sm:bottom-24 sm:right-24 rounded-xl"
+                : "bottom-3 left-3 right-3 sm:left-auto sm:bottom-24 sm:right-6 w-auto sm:w-full max-w-[500px] h-[360px] sm:h-[400px] rounded-xl"
             }`}
           >
             {/* Window Header */}

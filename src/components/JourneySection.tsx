@@ -47,9 +47,9 @@ const JourneySection = () => {
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-px" />
+          <div className="absolute left-3 sm:left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-px" />
 
-          <div className="space-y-16">
+          <div className="space-y-10 sm:space-y-16">
             {journey.map((entry, i) => (
               <motion.div
                 key={entry.year}
@@ -57,20 +57,20 @@ const JourneySection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className={`relative flex items-start gap-8 ${
+                className={`relative flex items-start gap-4 sm:gap-8 ${
                   i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
                 {/* Dot with Glow Effect */}
-                <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-primary rounded-full -translate-x-1.5 mt-2 z-10 shadow-[0_0_10px_#22c55e]" />
+                <div className="absolute left-3 sm:left-4 md:left-1/2 w-3 h-3 bg-primary rounded-full -translate-x-1.5 mt-1.5 sm:mt-2 z-10 shadow-[0_0_10px_#22c55e]" />
 
                 {/* Content Area */}
-                <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                  <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3">
-                    <span className="font-mono text-xs text-primary font-bold">{entry.year}</span>
+                <div className={`ml-8 sm:ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                  <div className="inline-block px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-primary/10 border border-primary/20 mb-2 sm:mb-3">
+                    <span className="font-mono text-[10px] sm:text-xs text-primary font-bold">{entry.year}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{entry.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 sm:mb-2">{entry.title}</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
                     {entry.description}
                   </p>
                 </div>

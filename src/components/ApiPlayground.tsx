@@ -110,17 +110,19 @@ const ApiPlayground = () => {
                                     <label className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2 block">
                                         {t("api.url")}
                                     </label>
-                                    <div className="flex items-center gap-0 w-full">
-                                        <div className={`px-4 py-3 rounded-l-lg font-mono text-sm font-bold ${currentEndpoint?.method === 'GET' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-green-500/10 text-green-400 border-green-500/20'} border border-r-0`}>
-                                            {currentEndpoint?.method}
-                                        </div>
-                                        <div className="flex-1 bg-[#1e1e1e] border border-white/10 px-4 py-3 font-mono text-sm text-foreground overflow-x-auto whitespace-nowrap">
-                                            https://api.haikal.dev{selectedPath}
+                                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 w-full">
+                                        <div className="flex items-center flex-1 min-w-0">
+                                            <div className={`px-3 sm:px-4 py-3 rounded-l-lg font-mono text-xs sm:text-sm font-bold ${currentEndpoint?.method === 'GET' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-green-500/10 text-green-400 border-green-500/20'} border border-r-0 shrink-0`}>
+                                                {currentEndpoint?.method}
+                                            </div>
+                                            <div className="flex-1 bg-[#1e1e1e] border border-white/10 px-3 sm:px-4 py-3 font-mono text-xs sm:text-sm text-foreground overflow-x-auto whitespace-nowrap rounded-r-lg sm:rounded-r-none">
+                                                https://api.haikal.dev{selectedPath}
+                                            </div>
                                         </div>
                                         <button
                                             onClick={handleSendRequest}
                                             disabled={loading}
-                                            className="bg-primary text-primary-foreground hover:opacity-90 px-6 py-3 rounded-r-lg font-bold transition-all flex items-center gap-2 border border-primary glow-border"
+                                            className="bg-primary text-primary-foreground hover:opacity-90 px-6 py-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg font-bold transition-all flex items-center justify-center gap-2 border border-primary glow-border shrink-0"
                                         >
                                             {loading ? (
                                                 <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

@@ -246,16 +246,16 @@ const HeroSection = () => {
           <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center mb-4">
               <SittingRobotHead mousePos={mousePos} />
-              <p className="font-mono text-sm text-primary/70 tracking-[0.3em] uppercase"> {t("hero.greeting")}</p>
+              <p className="font-mono text-xs sm:text-sm text-primary/70 tracking-[0.2em] sm:tracking-[0.3em] uppercase"> {t("hero.greeting")}</p>
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold leading-tight text-white tracking-tighter mb-4">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold leading-tight text-white tracking-tighter mb-4">
               Haikal<br /><span className="text-primary drop-shadow-[0_0_20px_rgba(34,197,94,0.4)]">Frastiawan</span>
             </h1>
-            <div className="h-10 mb-8"><TypingEffect /></div>
-            <p className="text-gray-400 font-medium text-base md:text-lg max-w-md mb-10 leading-relaxed italic border-l-2 border-primary/20 pl-4">
+            <div className="min-h-[3rem] mb-6 sm:mb-8"><TypingEffect /></div>
+            <p className="text-gray-400 font-medium text-sm sm:text-base md:text-lg max-w-md mb-8 sm:mb-10 leading-relaxed italic border-l-2 border-primary/20 pl-4">
               {t("hero.desc")}
             </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-12 relative z-50">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8 sm:mb-12 relative z-20">
               <MagneticButton className="flex-1 sm:flex-none">
                 <a href="#projects" className="w-full flex items-center justify-center bg-primary text-black px-6 py-3.5 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] text-sm">{t("hero.explore")}</a>
               </MagneticButton>
