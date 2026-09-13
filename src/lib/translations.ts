@@ -11,30 +11,97 @@ export const translations = {
 
         // Hero
         "hero.greeting": "Hi there, I'm",
-        "hero.desc": '"Architecting high-performance systems with Go (Gin/Fiber) and NestJS. Dedicated to scalable backend solutions."',
+        "hero.desc": '"Architecting enterprise-grade backend systems with Java and Spring Boot. Dedicated to scalable microservices and high-throughput API solutions."',
         "hero.explore": "Explore Projects",
         "hero.cv": "Download CV",
         "hero.contact": "Contact Me",
+        "hero.role.1": "Java Backend Specialist",
+        "hero.role.2": "Spring Boot Framework Expert",
+        "hero.role.3": "Enterprise API Architect",
+        "hero.role.4": "Microservices & Cloud Developer",
+        "hero.role.5": "High-Performance Java Systems",
+
+        // About Section
+        "about.badge": "// about me",
+        "about.title": "Get To Know Me",
+        "about.p1": "I'm Haikal Frastiawan, an Informatics student and dedicated Java Backend Specialist focusing on enterprise application development. I have a deep fascination with how complex backend systems manage high-concurrency traffic, maintain transactional integrity, and deliver scalable enterprise solutions.",
+        "about.p2": "Currently, I specialize in Java 21 and Spring Boot 3. My technical expertise spans across Spring Data JPA / Hibernate, Spring Security (OAuth2 & JWT), PostgreSQL database optimization, Redis caching strategies, and event-driven microservices architecture using Spring Cloud and Apache Kafka.",
+        "about.p3": "I believe that enterprise software demands clean, maintainable, and testable code. That's why I adhere strictly to Clean Architecture, SOLID principles, and enterprise design patterns.",
+        "about.stats.projects": "Projects Built",
+        "about.stats.commits": "Commits (2024)",
+        "about.stats.coffee": "Coffee Cups",
+        "about.stats.hours": "Hours Coding",
+        "about.focus.1.title": "Server-Side Logic",
+        "about.focus.1.desc": "Building enterprise backend systems using Java 21 and Spring Boot 3",
+        "about.focus.2.title": "Database & JPA",
+        "about.focus.2.desc": "Designing schemas with PostgreSQL and ORM with Spring Data JPA & Hibernate",
+        "about.focus.3.title": "API & Microservices",
+        "about.focus.3.desc": "Developing RESTful APIs, Spring Security, and Distributed Cloud Microservices",
+        "about.focus.4.title": "Enterprise Security",
+        "about.focus.4.desc": "Implementing OAuth2, JWT, and RBAC authentication with Spring Security",
+
+        // Skills Section
+        "skills.badge": "// tech_stack",
+        "skills.title": "Skills & Technologies",
+        "skills.cat.1": "Java & Spring Ecosystem",
+        "skills.cat.2": "Databases & Caching",
+        "skills.cat.3": "Tools & DevOps",
+        "skills.cat.4": "Frontend & Integration",
 
         // Api Playground
         "api.title": "API Playground",
-        "api.desc": "Test directly how my backend services respond. Select an endpoint below and hit Send to see the JSON response in real-time.",
+        "api.desc": "Test directly how my Spring Boot backend services respond. Select an endpoint below and hit Send to see the JSON response in real-time.",
         "api.endpoint": "Endpoint",
         "api.url": "Request URL",
         "api.send": "Send",
         "api.response": "Response",
+        "api.placeholder": "Hit 'Send' to fetch response...",
 
         // Projects
         "projects.badge": "// personal_labs",
         "projects.title": "Featured Projects",
-        "projects.desc": '"A collection of technical explorations and systems I am currently developing to deepen my expertise in backend architecture."',
+        "projects.desc": '"A collection of enterprise Java backend architectures and Spring Boot microservices developed for high performance and scalability."',
         "projects.arch": "View Architecture",
+        "projects.status.in_progress": "In Progress",
+        "projects.status.completed": "Completed",
+        "projects.status.concept": "Concept",
+        "projects.arch_title": "Architecture",
+        "projects.arch_desc": "High-level system design and data flow for this backend service.",
+        "projects.item1.title": "Spring Boot Microservices Ecosystem",
+        "projects.item1.desc": "Enterprise e-commerce microservices system built with Java 21 & Spring Boot 3. Features Spring Cloud Gateway, Eureka Discovery, Spring Security JWT, and PostgreSQL.",
+        "projects.item2.title": "Financial Transaction RESTful API",
+        "projects.item2.desc": "High-concurrency banking transaction engine using Spring Boot, Spring Data JPA, Hibernate, and Redis caching with strict ACID transaction management.",
+        "projects.item3.title": "Spring Security OAuth2 & Auth Server",
+        "projects.item3.desc": "Centralized identity and access management server implementing Spring Security 6, OAuth2 authorization, stateless JWT issuing, and RBAC security filters.",
+        "projects.item4.title": "ElektroServ SaaS Platform",
+        "projects.item4.desc": "A comprehensive SaaS booking service for electronic repairs and management. Fully integrated with backend REST APIs and dynamic database queries.",
+        "projects.item5.title": "Event-Driven Processing (Spring Kafka)",
+        "projects.item5.desc": "Distributed order processing pipeline utilizing Spring Boot and Apache Kafka event streaming to process high-volume asynchronous messages efficiently.",
 
-        // Blog
-        "blog.badge": "// writings",
-        "blog.title": "Tech Notes",
-        "blog.desc": "Occasionally I write about backend engineering, performance optimizations, and system design challenges I've encountered.",
-        "blog.read": "Read Article",
+        // GitHub Section
+        "github.badge": "// open source",
+        "github.title": "GitHub Activity",
+        "github.activity": "Contribution Activity",
+        "github.default_desc": "Building high-performance backend architectures.",
+
+        // Journey Section
+        "journey.badge": "// my_evolution",
+        "journey.title": "Career Journey",
+        "journey.item1.title": "The Foundation",
+        "journey.item1.desc": "Started my coding journey by mastering Object-Oriented Programming (OOP), Java fundamentals, core algorithms, and software engineering concepts.",
+        "journey.item2.title": "Backend & Relational Databases",
+        "journey.item2.desc": "Built RESTful services and focused on database design with PostgreSQL & MySQL. Mastered SQL query optimization and ORM integration.",
+        "journey.item3.title": "Enterprise Java & Spring Boot",
+        "journey.item3.desc": "Specialized in Java 21 and Spring Boot 3. Implemented Spring Data JPA, Hibernate, Spring Security (OAuth2/JWT), and Redis caching layers.",
+        "journey.item4.title": "Distributed Microservices Architecture",
+        "journey.item4.desc": "Architecting event-driven microservices using Spring Cloud, Eureka, Apache Kafka, Docker containerization, and high-performance Java APIs.",
+
+        // Certificates Section
+        "certificates.badge": "// achievements",
+        "certificates.title": "Certificates",
+
+        // Visitor Counter
+        "visitor.live": "Live Visits",
 
         // Contact
         "contact.badge": "// get in touch",
@@ -48,6 +115,13 @@ export const translations = {
         "contact.sent": "Message Sent!",
         "contact.error": "Error! Try again",
         "contact.quick": "Quick Contact",
+        "contact.placeholder_name": "Your name",
+        "contact.placeholder_email": "your@email.com",
+        "contact.placeholder_message": "Tell me about your project...",
+        "contact.quick_wa": "Chat with me directly",
+        "contact.quick_email": "haikalfrastiawan16@gmail.com",
+        "contact.quick_github": "Check my repositories",
+        "contact.quick_linkedin": "Let's connect",
     },
     id: {
         // Navbar
@@ -61,30 +135,97 @@ export const translations = {
 
         // Hero
         "hero.greeting": "Halo, saya",
-        "hero.desc": '"Membangun sistem performa tinggi dengan Go (Gin/Fiber) dan NestJS. Berdedikasi pada solusi backend yang scalable."',
+        "hero.desc": '"Membangun sistem arsitektur enterprise yang andal dengan Java dan Spring Boot. Berdedikasi pada solusi mikroservis dan arsitektur backend yang scalable."',
         "hero.explore": "Jelajahi Proyek",
         "hero.cv": "Unduh CV",
         "hero.contact": "Hubungi Saya",
+        "hero.role.1": "Spesialis Backend Java",
+        "hero.role.2": "Ahli Framework Spring Boot",
+        "hero.role.3": "Arsitek API Enterprise",
+        "hero.role.4": "Pengembang Microservices & Cloud",
+        "hero.role.5": "Sistem Java Performa Tinggi",
+
+        // About Section
+        "about.badge": "// tentang saya",
+        "about.title": "Mengenal Saya Lebih Dekat",
+        "about.p1": "Saya Haikal Frastiawan, seorang mahasiswa Informatika dan Spesialis Backend Java yang berfokus pada pengembangan aplikasi enterprise. Saya memiliki ketertarikan mendalam pada bagaimana sistem backend kompleks mengelola lalu lintas konkurensi tinggi, menjaga integritas transaksi, dan menghadirkan solusi enterprise yang skalabel.",
+        "about.p2": "Saat ini, saya berspesialisasi dalam Java 21 dan Spring Boot 3. Keahlian teknis saya mencakup Spring Data JPA / Hibernate, Spring Security (OAuth2 & JWT), optimasi basis data PostgreSQL, strategi caching Redis, dan arsitektur microservices event-driven menggunakan Spring Cloud dan Apache Kafka.",
+        "about.p3": "Saya percaya bahwa perangkat lunak enterprise membutuhkan kode yang bersih, mudah dirawat, dan dapat diuji. Oleh karena itu, saya secara ketat menerapkan Clean Architecture, prinsip SOLID, dan pola desain enterprise.",
+        "about.stats.projects": "Proyek Selesai",
+        "about.stats.commits": "Komit (2024)",
+        "about.stats.coffee": "Cangkir Kopi",
+        "about.stats.hours": "Jam Coding",
+        "about.focus.1.title": "Logika Server-Side",
+        "about.focus.1.desc": "Membangun sistem backend enterprise menggunakan Java 21 dan Spring Boot 3",
+        "about.focus.2.title": "Basis Data & JPA",
+        "about.focus.2.desc": "Merancang skema dengan PostgreSQL dan ORM dengan Spring Data JPA & Hibernate",
+        "about.focus.3.title": "API & Microservices",
+        "about.focus.3.desc": "Mengembangkan RESTful API, Spring Security, dan Microservices Cloud Terdistribusi",
+        "about.focus.4.title": "Keamanan Enterprise",
+        "about.focus.4.desc": "Menerapkan autentikasi OAuth2, JWT, dan RBAC dengan Spring Security",
+
+        // Skills Section
+        "skills.badge": "// keahlian_teknik",
+        "skills.title": "Keahlian & Teknologi",
+        "skills.cat.1": "Ekosistem Java & Spring",
+        "skills.cat.2": "Basis Data & Caching",
+        "skills.cat.3": "Alat & DevOps",
+        "skills.cat.4": "Frontend & Integrasi",
 
         // Api Playground
         "api.title": "Area Uji API",
-        "api.desc": "Uji langsung bagaimana layanan backend saya merespons. Pilih endpoint di bawah lalu tekan Kirim untuk melihat respons JSON secara real-time.",
+        "api.desc": "Uji langsung bagaimana layanan backend Spring Boot saya merespons. Pilih endpoint di bawah lalu tekan Kirim untuk melihat respons JSON secara real-time.",
         "api.endpoint": "Titik Akhir (Endpoint)",
         "api.url": "URL Permintaan",
         "api.send": "Kirim",
         "api.response": "Respons",
+        "api.placeholder": "Tekan 'Kirim' untuk mengambil respons...",
 
         // Projects
         "projects.badge": "// laboratorium_pribadi",
         "projects.title": "Proyek Unggulan",
-        "projects.desc": '"Kumpulan eksplorasi teknis dan sistem yang sedang saya kembangkan untuk memperdalam keahlian di bidang arsitektur backend."',
+        "projects.desc": '"Kumpulan arsitektur backend Java enterprise dan microservices Spring Boot yang dirancang untuk performa tinggi dan skalabilitas."',
         "projects.arch": "Lihat Arsitektur",
+        "projects.status.in_progress": "Dalam Proses",
+        "projects.status.completed": "Selesai",
+        "projects.status.concept": "Konsep",
+        "projects.arch_title": "Arsitektur",
+        "projects.arch_desc": "Desain sistem tingkat tinggi dan alur data untuk layanan backend ini.",
+        "projects.item1.title": "Ekosistem Microservices Spring Boot",
+        "projects.item1.desc": "Sistem microservices e-commerce enterprise yang dibangun dengan Java 21 & Spring Boot 3. Dilengkapi Spring Cloud Gateway, Eureka Discovery, Spring Security JWT, dan PostgreSQL.",
+        "projects.item2.title": "RESTful API Transaksi Keuangan",
+        "projects.item2.desc": "Engine transaksi perbankan konkurensi tinggi menggunakan Spring Boot, Spring Data JPA, Hibernate, dan Redis caching dengan manajemen transaksi ACID yang ketat.",
+        "projects.item3.title": "Spring Security OAuth2 & Auth Server",
+        "projects.item3.desc": "Server manajemen identitas dan akses terpusat yang mengimplementasikan Spring Security 6, otorisasi OAuth2, penerbitan JWT stateless, dan filter keamanan RBAC.",
+        "projects.item4.title": "Platform SaaS ElektroServ",
+        "projects.item4.desc": "Layanan pemesanan SaaS komprehensif untuk perbaikan dan manajemen elektronik. Terintegrasi penuh dengan REST API backend dan kueri basis data dinamis.",
+        "projects.item5.title": "Pemrosesan Event-Driven (Spring Kafka)",
+        "projects.item5.desc": "Pipeline pemrosesan pesanan terdistribusi yang memanfaatkan pemrosesan pesan asinkron volume tinggi secara efisien dengan Spring Boot dan Apache Kafka.",
 
-        // Blog
-        "blog.badge": "// tulisan",
-        "blog.title": "Catatan Teknis",
-        "blog.desc": "Terkadang saya menulis tentang backend engineering, optimasi performa, dan tantangan desain sistem yang saya temui.",
-        "blog.read": "Baca Artikel",
+        // GitHub Section
+        "github.badge": "// kode terbuka",
+        "github.title": "Aktivitas GitHub",
+        "github.activity": "Aktivitas Kontribusi",
+        "github.default_desc": "Membangun arsitektur backend berkinerja tinggi.",
+
+        // Journey Section
+        "journey.badge": "// evolusi_saya",
+        "journey.title": "Perjalanan Karir",
+        "journey.item1.title": "Pondasi Awal",
+        "journey.item1.desc": "Memulai perjalanan pemrograman dengan menguasai Pemrograman Berorientasi Objek (OOP), dasar-dasar Java, algoritma inti, dan konsep rekayasa perangkat lunak.",
+        "journey.item2.title": "Backend & Basis Data Relasional",
+        "journey.item2.desc": "Membangun layanan RESTful dan berfokus pada desain basis data dengan PostgreSQL & MySQL. Menguasai optimasi kueri SQL dan integrasi ORM.",
+        "journey.item3.title": "Java Enterprise & Spring Boot",
+        "journey.item3.desc": "Berspesialisasi dalam Java 21 dan Spring Boot 3. Mengimplementasikan Spring Data JPA, Hibernate, Spring Security (OAuth2/JWT), dan lapisan caching Redis.",
+        "journey.item4.title": "Arsitektur Microservices Terdistribusi",
+        "journey.item4.desc": "Merancang microservices event-driven menggunakan Spring Cloud, Eureka, Apache Kafka, kontainerisasi Docker, dan API Java berkinerja tinggi.",
+
+        // Certificates Section
+        "certificates.badge": "// pencapaian",
+        "certificates.title": "Sertifikat",
+
+        // Visitor Counter
+        "visitor.live": "Pengunjung Langsung",
 
         // Contact
         "contact.badge": "// mari_berbincang",
@@ -98,6 +239,13 @@ export const translations = {
         "contact.sent": "Pesan Terkirim!",
         "contact.error": "Gagal! Coba lagi",
         "contact.quick": "Kontak Cepat",
+        "contact.placeholder_name": "Nama Anda",
+        "contact.placeholder_email": "email@anda.com",
+        "contact.placeholder_message": "Tuliskan pesan atau proyek Anda...",
+        "contact.quick_wa": "Chat langsung dengan saya",
+        "contact.quick_email": "haikalfrastiawan16@gmail.com",
+        "contact.quick_github": "Lihat repositori saya",
+        "contact.quick_linkedin": "Mari terhubung",
     }
 };
 

@@ -1,39 +1,33 @@
 import { motion } from "framer-motion";
-import { 
-  Code2, Server, Database, Wrench 
-} from "lucide-react";
-
-interface SkillCategory {
-  title: string;
-  icon: any;
-  skills: string[];
-}
-
-const categories: SkillCategory[] = [
-  {
-    title: "Frontend",
-    icon: <Code2 size={20} />,
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    title: "Backend",
-    icon: <Server size={20} />,
-    skills: ["Node.js", "Go", "Express", "NestJS"],
-  },
-  {
-    title: "Database",
-    icon: <Database size={20} />,
-  /* Pastikan nama skill sesuai dengan nama brand agar logo muncul */
-    skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL"],
-  },
-  {
-    title: "Tools & DevOps",
-    icon: <Wrench size={20} />,
-    skills: ["Git", "Docker", "Postman"],
-  },
-];
+import { Code2, Server, Database, Wrench } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
 
 const SkillsSection = () => {
+  const { t } = useTranslation();
+
+  const categories = [
+    {
+      title: t("skills.cat.1"),
+      icon: <Server size={20} />,
+      skills: ["Java", "SpringBoot", "Spring", "Hibernate"],
+    },
+    {
+      title: t("skills.cat.2"),
+      icon: <Database size={20} />,
+      skills: ["PostgreSQL", "MySQL", "Redis", "MongoDB"],
+    },
+    {
+      title: t("skills.cat.3"),
+      icon: <Wrench size={20} />,
+      skills: ["Docker", "ApacheKafka", "Git", "Postman", "Linux"],
+    },
+    {
+      title: t("skills.cat.4"),
+      icon: <Code2 size={20} />,
+      skills: ["TypeScript", "React", "Next.js", "Tailwind CSS"],
+    },
+  ];
+
   return (
     <section id="skills" className="py-24 px-6 relative">
       <div className="max-w-6xl mx-auto w-full">
@@ -46,9 +40,9 @@ const SkillsSection = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <p className="font-mono text-sm text-primary mb-2">{"// tech_stack"}</p>
+          <p className="font-mono text-sm text-primary mb-2">{t("skills.badge")}</p>
           <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            Skills & Technologies
+            {t("skills.title")}
           </h2>
         </motion.div>
 

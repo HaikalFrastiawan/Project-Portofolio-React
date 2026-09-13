@@ -1,22 +1,25 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Layout, Server, ShieldCheck, Zap, Activity, Coffee, Github as RepoIcon, Code } from "lucide-react";
+import { Code2, Database, Server, ShieldCheck, Activity, Coffee, Github as RepoIcon, Code } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
-
-const focusAreas = [
-  { icon: Server, title: "Server-Side Logic", desc: "Building scalable backend systems using Golang and Node.js" },
-  { icon: Database, title: "Database Management", desc: "Designing efficient schemas with PostgreSQL and MongoDB" },
-  { icon: Code2, title: "API Architecture", desc: "Developing robust RESTful and gRPC services" },
-  { icon: ShieldCheck, title: "System Security", desc: "Implementing secure authentication and data protection" },
-];
-
-const stats = [
-  { label: "Projects Built", value: 15, suffix: "+", icon: RepoIcon },
-  { label: "Commits (2024)", value: 850, suffix: "+", icon: Activity },
-  { label: "Coffee Cups", value: 1200, suffix: "+", icon: Coffee },
-  { label: "Hours Coding", value: 2500, suffix: "+", icon: Code },
-];
+import { useTranslation } from "@/context/TranslationContext";
 
 const AboutSection = () => {
+  const { t } = useTranslation();
+
+  const focusAreas = [
+    { icon: Server, title: t("about.focus.1.title"), desc: t("about.focus.1.desc") },
+    { icon: Database, title: t("about.focus.2.title"), desc: t("about.focus.2.desc") },
+    { icon: Code2, title: t("about.focus.3.title"), desc: t("about.focus.3.desc") },
+    { icon: ShieldCheck, title: t("about.focus.4.title"), desc: t("about.focus.4.desc") },
+  ];
+
+  const stats = [
+    { label: t("about.stats.projects"), value: 15, suffix: "+", icon: RepoIcon },
+    { label: t("about.stats.commits"), value: 850, suffix: "+", icon: Activity },
+    { label: t("about.stats.coffee"), value: 1200, suffix: "+", icon: Coffee },
+    { label: t("about.stats.hours"), value: 2500, suffix: "+", icon: Code },
+  ];
+
   return (
     <section id="about" className="py-24 px-6 relative">
       <div className="max-w-column mx-auto w-full">
@@ -28,21 +31,21 @@ const AboutSection = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-sm text-primary mb-2">{"// about me"}</p>
+          <p className="font-mono text-sm text-primary mb-2">{t("about.badge")}</p>
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10">
-            Get To Know Me
+            {t("about.title")}
           </h2>
 
           <div className="glass-card rounded-xl p-8 md:p-12 mb-12 relative overflow-hidden group">
             <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             <p className="text-foreground font-body text-base md:text-lg leading-relaxed mb-6 relative z-10">
-              I'm <span className="text-primary font-medium">Haikal Frastiawan</span>, an Informatics student dedicated to mastering the core of web ecosystems: <span className="italic">the Backend</span>. I have a deep fascination with how complex systems handle data, manage high traffic, and maintain seamless communication between services.
+              {t("about.p1")}
             </p>
             <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed mb-6 relative z-10">
-              Currently, I am sharpening my expertise in Backend Engineering, focusing on building high-performance services using Golang and Node.js. I specialize in designing structured databases with PostgreSQL, caching strategies, and ensuring that every API I build is not only functional but also scalable and secure.
+              {t("about.p2")}
             </p>
             <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed relative z-10">
-              I believe that a great application starts with a solid foundation. That’s why I’m committed to writing clean, maintainable code and exploring advanced topics like microservices, system design, and cloud infrastructure.
+              {t("about.p3")}
             </p>
           </div>
 

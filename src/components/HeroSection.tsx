@@ -5,19 +5,19 @@ import { useTranslation } from "@/context/TranslationContext";
 import MagneticButton from "@/components/MagneticButton";
 
 const roles = [
-  "Backend Engineering Specialist",
-  "Golang (Gin & Fiber) Developer",
-  "NestJS Framework Expert",
-  "Node.js Ecosystem Specialist",
-  "High-Performance API Architect",
+  "Java Backend Specialist",
+  "Spring Boot Framework Expert",
+  "Enterprise API Architect",
+  "Microservices & Cloud Developer",
+  "High-Performance Java Systems",
 ];
 
 const techIconsData = [
-  { label: "Golang", x: "75%", y: "15%", delay: 0, color: "#00ADD8" },
-  { label: "NestJS", x: "85%", y: "40%", delay: 0.5, color: "#E0234E" },
-  { label: "Gin/Fiber", x: "65%", y: "55%", delay: 0.8, color: "#00ADD8" },
-  { label: "Node.js", x: "75%", y: "75%", delay: 1, color: "#339933" },
-  { label: "Postgres", x: "90%", y: "85%", delay: 1.5, color: "#4169E1" },
+  { label: "Java 21", x: "75%", y: "15%", delay: 0, color: "#E76F00" },
+  { label: "Spring Boot", x: "85%", y: "40%", delay: 0.5, color: "#6DB33F" },
+  { label: "Spring Security", x: "65%", y: "55%", delay: 0.8, color: "#6DB33F" },
+  { label: "Postgres", x: "75%", y: "75%", delay: 1, color: "#4169E1" },
+  { label: "Docker", x: "90%", y: "85%", delay: 1.5, color: "#2496ED" },
 ];
 
 // PERBAIKAN: Pindahkan socialData ke luar agar bisa diakses oleh HeroSection
@@ -158,13 +158,13 @@ const Terminal3DCard = ({ mousePos }: { mousePos: { x: number, y: number } }) =>
           style={{ transform: "translateZ(50px)" }}
         >
           <code>
-            <span className="text-purple-400">const</span> <span className="text-blue-400">stack</span> = {"{"}
-            {"\n"}  go: [<span className="text-green-400">"Gin"</span>, <span className="text-green-400">"Fiber"</span>],
-            {"\n"}  node: <span className="text-orange-400">"NestJS"</span>,
-            {"\n"}  db: <span className="text-blue-400">"PostgreSQL"</span>,
-            {"\n"}  architecture: <span className="text-green-400">"Microservices"</span>,
-            {"\n"}  scaling: <span className="text-green-400">"Docker"</span>
-            {"\n"}{"}"};
+            <span className="text-purple-400">@SpringBootApplication</span>
+            {"\n"}<span className="text-purple-400">public class</span> <span className="text-blue-400">Application</span> {"{"}
+            {"\n"}  <span className="text-purple-400">private String</span> lang = <span className="text-green-400">"Java 21"</span>;
+            {"\n"}  <span className="text-purple-400">private String</span> framework = <span className="text-green-400">"Spring Boot 3"</span>;
+            {"\n"}  <span className="text-purple-400">private String</span> database = <span className="text-green-400">"PostgreSQL"</span>;
+            {"\n"}  <span className="text-purple-400">private String</span> pattern = <span className="text-green-400">"Microservices"</span>;
+            {"\n"}{"}"}
           </code>
         </pre>
         
@@ -179,12 +179,26 @@ const Terminal3DCard = ({ mousePos }: { mousePos: { x: number, y: number } }) =>
 
 // --- TYPING EFFECT ---
 const TypingEffect = () => {
+  const { t } = useTranslation();
+  const roles = [
+    t("hero.role.1"),
+    t("hero.role.2"),
+    t("hero.role.3"),
+    t("hero.role.4"),
+    t("hero.role.5"),
+  ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [text, setText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const currentRole = roles[roleIndex];
+    // Reset typing text when role index changes or roles change
+    setText("");
+    setDeleting(false);
+  }, [roles[0]]);
+
+  useEffect(() => {
+    const currentRole = roles[roleIndex] || roles[0];
     const handleTyping = () => {
       if (!deleting) {
         const nextText = currentRole.slice(0, text.length + 1);
@@ -201,7 +215,7 @@ const TypingEffect = () => {
     };
     const timeout = setTimeout(handleTyping, deleting ? 40 : 80);
     return () => clearTimeout(timeout);
-  }, [text, deleting, roleIndex]);
+  }, [text, deleting, roleIndex, roles]);
 
   return (
     <span className="font-mono text-primary text-lg md:text-xl border-r-2 border-primary pr-1">
@@ -246,7 +260,7 @@ const HeroSection = () => {
                 <a href="#projects" className="w-full flex items-center justify-center bg-primary text-black px-6 py-3.5 rounded-xl font-bold transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] text-sm">{t("hero.explore")}</a>
               </MagneticButton>
               <MagneticButton className="flex-1 sm:flex-none">
-                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-white/10 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all text-sm">{t("hero.cv")}</a>
+                <a href="https://drive.google.com/file/d/1TL0smsrshCEIPQjaIjfRzyF7e3WQs9wW/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-white/10 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all text-sm">{t("hero.cv")}</a>
               </MagneticButton>
               <MagneticButton className="flex-1 sm:flex-none">
                 <a href="#contact" className="w-full flex items-center justify-center border border-white/10 px-6 py-3.5 rounded-xl font-bold text-white hover:bg-white/10 transition-all text-sm">{t("hero.contact")}</a>

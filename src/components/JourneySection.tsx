@@ -1,35 +1,32 @@
 import { motion } from "framer-motion";
-
-interface JourneyEntry {
-  year: string;
-  title: string;
-  description: string;
-}
-
-const journey: JourneyEntry[] = [
-  {
-    year: "2023",
-    title: "The Foundation",
-    description: "Started my coding journey by mastering JavaScript fundamentals. Focused on core programming logic, data structures, and asynchronous patterns.",
-  },
-  {
-    year: "2024",
-    title: "Backend & Database Entry",
-    description: "Deep-dived into Node.js and Express. Started building RESTful APIs and managing relational databases (MySQL/Postgres) and NoSQL (MongoDB).",
-  },
-  {
-    year: "2025",
-    title: "Enterprise Architecture & Go",
-    description: "Transitioned to NestJS for modular architecture. Started adopting Golang (Gin/Fiber) for high-performance services and implementing Redis for caching.",
-  },
-  {
-    year: "2026",
-    title: "Scalable Systems & DevOps",
-    description: "Focusing on containerization with Docker, database optimization, and architecting scalable, production-ready backend ecosystems.",
-  },
-];
+import { useTranslation } from "@/context/TranslationContext";
 
 const JourneySection = () => {
+  const { t } = useTranslation();
+
+  const journey = [
+    {
+      year: "2023",
+      title: t("journey.item1.title"),
+      description: t("journey.item1.desc"),
+    },
+    {
+      year: "2024",
+      title: t("journey.item2.title"),
+      description: t("journey.item2.desc"),
+    },
+    {
+      year: "2025",
+      title: t("journey.item3.title"),
+      description: t("journey.item3.desc"),
+    },
+    {
+      year: "2026",
+      title: t("journey.item4.title"),
+      description: t("journey.item4.desc"),
+    },
+  ];
+
   return (
     <section id="journey" className="py-24 px-6 bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto w-full">
@@ -42,9 +39,9 @@ const JourneySection = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-sm text-primary mb-2">{"// my_evolution"}</p>
+          <p className="font-mono text-sm text-primary mb-2">{t("journey.badge")}</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
-            Career Journey
+            {t("journey.title")}
           </h2>
         </motion.div>
 

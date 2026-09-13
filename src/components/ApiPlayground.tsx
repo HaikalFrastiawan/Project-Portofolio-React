@@ -14,23 +14,24 @@ const mockResponses: Record<string, string> = {
   "status": 200,
   "data": {
     "name": "Haikal Frastiawan",
-    "role": "Backend Engineer",
+    "role": "Java Backend Specialist",
     "location": "Indonesia",
-    "focus": ["Scalability", "Microservices", "Performance"]
+    "specialization": "Spring Boot & Microservices Architecture",
+    "focus": ["High Throughput", "Scalability", "Clean Architecture"]
   }
 }`,
     "/api/v1/skills": `{
   "status": 200,
   "data": {
-    "languages": ["Go", "TypeScript", "JavaScript"],
-    "frameworks": ["Gin", "Fiber", "NestJS", "Express"],
-    "databases": ["PostgreSQL", "MySQL", "MongoDB"],
-    "tools": ["Docker", "Git", "Postman", "Linux"]
+    "languages": ["Java 21", "SQL"],
+    "frameworks": ["Spring Boot 3", "Spring Security", "Spring Data JPA", "Hibernate"],
+    "databases": ["PostgreSQL", "MySQL", "Redis"],
+    "devops": ["Docker", "Kafka", "Maven", "Gradle"]
   }
 }`,
     "/api/v1/contact": `{
   "status": 201,
-  "message": "Message sent successfully!",
+  "message": "Message successfully received by Spring Boot backend service!",
   "data": null
 }`
 };
@@ -172,7 +173,7 @@ const ApiPlayground = () => {
                                         </pre>
                                     ) : (
                                         <div className="h-full flex items-center justify-center text-muted-foreground/50 italic">
-                                            Hit 'Send' to fetch response...
+                                            {t("api.placeholder")}
                                         </div>
                                     )}
                                 </div>

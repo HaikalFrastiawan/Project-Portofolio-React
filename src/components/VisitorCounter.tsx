@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Users, Activity } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
 
 export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    // Only fetch on client-side and only once per session to prevent infinite loops
-    // In strict mode this might run twice, but counterapi handles it gracefully
     let isMounted = true;
     
     const fetchHits = async () => {
@@ -42,7 +42,7 @@ export default function VisitorCounter() {
       </div>
       <div className="flex flex-col items-start pr-2">
         <span className="text-[10px] text-gray-400 font-mono flex items-center gap-1.5 uppercase tracking-wider">
-          <Activity size={10} className="text-green-500 animate-pulse" /> Live Visits
+          <Activity size={10} className="text-green-500 animate-pulse" /> {t("visitor.live")}
         </span>
         <span className="text-white font-bold leading-none tracking-widest text-base font-mono mt-1 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
           {count.toLocaleString()}

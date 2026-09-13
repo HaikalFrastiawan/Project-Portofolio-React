@@ -32,7 +32,7 @@ const ContactSection = () => {
 
       if (result.success) {
         setStatus("success");
-        setFormData({ name: "", email: "", message: "" }); // Reset form
+        setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setStatus("idle"), 5000);
       } else {
         setStatus("error");
@@ -42,6 +42,13 @@ const ContactSection = () => {
       setStatus("error");
     }
   };
+
+  const quickLinks = [
+    { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/08136761485", desc: t("contact.quick_wa") },
+    { icon: Mail, label: "Email", href: "mailto:haikalfrastiawan16@gmail.com", desc: t("contact.quick_email") },
+    { icon: Github, label: "GitHub", href: "https://github.com/HaikalFrastiawan", desc: t("contact.quick_github") },
+    { icon: Linkedin, label: "LinkedIn", href: "http://linkedin.com/in/haikal-frastiawan-5b8287277/", desc: t("contact.quick_linkedin") },
+  ];
 
   return (
     <section id="contact" className="py-24 px-6">
@@ -77,7 +84,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full bg-muted/30 border border-border rounded-lg text-foreground font-body text-sm py-3 px-4 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all"
-                    placeholder="Your name"
+                    placeholder={t("contact.placeholder_name")}
                   />
                 </div>
                 <div>
@@ -91,7 +98,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-muted/30 border border-border rounded-lg text-foreground font-body text-sm py-3 px-4 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all"
-                    placeholder="your@email.com"
+                    placeholder={t("contact.placeholder_email")}
                   />
                 </div>
                 <div>
@@ -105,7 +112,7 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full bg-muted/30 border border-border rounded-lg text-foreground font-body text-sm py-3 px-4 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder={t("contact.placeholder_message")}
                   />
                 </div>
                 <button
@@ -128,12 +135,7 @@ const ContactSection = () => {
                   {t("contact.quick")}
                 </h3>
                 <div className="space-y-5">
-                  {[
-                    { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/08136761485", desc: "Chat with me directly" },
-                    { icon: Mail, label: "Email", href: "mailto:haikalfrastiawan16@gmail.com", desc: "haikalfrastiawan16@gmail.com" },
-                    { icon: Github, label: "GitHub", href: "https://github.com/HaikalFrastiawan", desc: "Check my repositories" },
-                    { icon: Linkedin, label: "LinkedIn", href: "http://linkedin.com/in/haikal-frastiawan-5b8287277/", desc: "Let's connect" },
-                  ].map(({ icon: Icon, label, href, desc }) => (
+                  {quickLinks.map(({ icon: Icon, label, href, desc }) => (
                     <a
                       key={label}
                       href={href}

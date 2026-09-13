@@ -11,66 +11,51 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-interface Project {
-  title: string;
-  description: string;
-  stack: string[];
-  github?: string;
-  demo?: string;
-  status: "In Progress" | "Concept" | "Completed";
-  icon: any;
-}
-
-const projects: Project[] = [
-  {
-    title: "ElektroServ Platform",
-    description:
-      "A comprehensive SaaS booking service for electronic repairs and management. Fully deployed with dynamic routing and custom database integrations.",
-    stack: ["React", "Go", "Neon", "Railway", "Vercel"],
-    demo: "https://electronic-service-five.vercel.app/",
-    status: "Completed",
-    icon: <Monitor className="text-primary" size={24} />,
-  },
-  {
-    title: "High-Performance Go API",
-    description:
-      "Developing a RESTful API using Go (Gin/Fiber) with a focus on execution speed and memory efficiency. Implementing JWT Authentication and Clean Architecture patterns.",
-    stack: ["Golang", "Gin", "PostgreSQL", "Docker"],
-    github: "https://github.com/HaikalFrastiawan/MySkill-Go-Ecommerce-Api.git",
-    status: "In Progress",
-    icon: <Server className="text-primary" size={24} />,
-  },
-  {
-    title: "NestJS Modular Microservice",
-    description:
-      "Architecting a modular backend system using NestJS. Managing complex data streams with Redis for caching and MongoDB for schema flexibility.",
-    stack: ["NestJS", "TypeScript", "Redis", "MongoDB"],
-    github: "https://github.com/HaikalFrastiawan/Project-Marketplace-nest.git",
-    status: "In Progress",
-    icon: <Code2 className="text-primary" size={24} />,
-  },
-  {
-    title: "AnimeList Web App",
-    description:
-      "A modern web application to browse, search, and track anime. Built with Next.js to leverage Server-Side Rendering (SSR) and Server Components for optimal performance.",
-    stack: ["Next.js", "React", "TailwindCSS", "API Integration"],
-    github: "https://github.com/HaikalFrastiawan/AnimeList-Next-js.git",
-    status: "Completed",
-    icon: <Monitor className="text-primary" size={24} />,
-  },
-  {
-    title: "Scalable Database Schema Design",
-    description:
-      "A research project focused on query optimization and database standardization using MySQL and Postgres to efficiently handle high-volume data loads.",
-    stack: ["MySQL", "Postgres", "Database Design"],
-    github: "https://github.com/HaikalFrastiawan/RestfulApi-Typescript.git",
-    status: "Concept",
-    icon: <Database className="text-primary" size={24} />,
-  },
-];
-
 const ProjectsSection = () => {
   const { t } = useTranslation();
+
+  const projects = [
+    {
+      title: t("projects.item1.title"),
+      description: t("projects.item1.desc"),
+      stack: ["Java 21", "Spring Boot 3", "Spring Cloud", "PostgreSQL", "Docker"],
+      github: "https://github.com/HaikalFrastiawan/MySkill-Go-Ecommerce-Api.git",
+      status: t("projects.status.in_progress"),
+      icon: <Server className="text-primary" size={24} />,
+    },
+    {
+      title: t("projects.item2.title"),
+      description: t("projects.item2.desc"),
+      stack: ["Java", "Spring Boot", "Spring Data JPA", "Redis", "MySQL"],
+      github: "https://github.com/HaikalFrastiawan/Project-Marketplace-nest.git",
+      status: t("projects.status.completed"),
+      icon: <Code2 className="text-primary" size={24} />,
+    },
+    {
+      title: t("projects.item3.title"),
+      description: t("projects.item3.desc"),
+      stack: ["Java 21", "Spring Security 6", "OAuth2", "JWT", "PostgreSQL"],
+      github: "https://github.com/HaikalFrastiawan/RestfulApi-Typescript.git",
+      status: t("projects.status.completed"),
+      icon: <Database className="text-primary" size={24} />,
+    },
+    {
+      title: t("projects.item4.title"),
+      description: t("projects.item4.desc"),
+      stack: ["React", "Java", "Spring Boot", "Neon", "Vercel"],
+      demo: "https://electronic-service-five.vercel.app/",
+      status: t("projects.status.completed"),
+      icon: <Monitor className="text-primary" size={24} />,
+    },
+    {
+      title: t("projects.item5.title"),
+      description: t("projects.item5.desc"),
+      stack: ["Java", "Spring Boot", "Apache Kafka", "PostgreSQL", "Docker"],
+      github: "https://github.com/HaikalFrastiawan/AnimeList-Next-js.git",
+      status: t("projects.status.concept"),
+      icon: <Server className="text-primary" size={24} />,
+    },
+  ];
 
   return (
     <section id="projects" className="py-24 px-6 bg-[#0a0a0a]">
@@ -141,9 +126,9 @@ const ProjectsSection = () => {
                       </DialogTrigger>
                       <DialogContent className="bg-[#0b0f19] border-white/10 text-white sm:max-w-2xl overflow-hidden p-6 z-[99999]">
                         <DialogHeader>
-                          <DialogTitle>{project.title} Architecture</DialogTitle>
+                          <DialogTitle>{project.title} - {t("projects.arch_title")}</DialogTitle>
                           <DialogDescription className="text-gray-400">
-                            High-level system design and data flow for this backend service.
+                            {t("projects.arch_desc")}
                           </DialogDescription>
                         </DialogHeader>
                         <div className="mt-4 border border-white/10 rounded-xl bg-black/50 p-6 flex flex-col items-center justify-center min-h-[300px]">
@@ -166,7 +151,6 @@ const ProjectsSection = () => {
                               <div className="border border-gray-500/30 bg-gray-500/10 px-4 py-2 rounded flex items-center gap-2"><Database size={14} /> Redis</div>
                               <div className="border border-teal-500/30 bg-teal-500/10 px-4 py-2 rounded flex items-center gap-2 text-teal-400"><Database size={14} /> DB Master</div>
                             </div>
-                            <p className="mt-8 text-xs italic text-gray-500 pt-4 border-t border-white/5">*This is a placeholder architecture diagram block. Update with actual image or detailed nodes later.</p>
                           </div>
                         </div>
                       </DialogContent>

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Award, ExternalLink } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
 
 const certificates = [
-
   {
     title: "Project Express & MongoDB",
     issuer: "Code Politan",
@@ -72,6 +72,8 @@ const certificates = [
 ];
 
 const Certifications = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="certificates" className="py-24 px-6 bg-[#0a0a0a]"> 
       <div className="max-w-6xl mx-auto">
@@ -80,8 +82,8 @@ const Certifications = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-sm text-primary mb-2">{"// achievements"}</p>
-          <h2 className="text-4xl font-heading font-bold mb-12 text-white">Certificates</h2>
+          <p className="font-mono text-sm text-primary mb-2">{t("certificates.badge")}</p>
+          <h2 className="text-4xl font-heading font-bold mb-12 text-white">{t("certificates.title")}</h2>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

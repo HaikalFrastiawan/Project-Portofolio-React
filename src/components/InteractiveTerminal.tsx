@@ -10,27 +10,36 @@ interface CommandHistory {
 }
 
 export default function InteractiveTerminal() {
-  const { t } = useTranslation();
+  const { language } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<CommandHistory[]>([
+
+  const getInitialWelcome = (lang: string) => [
     {
       command: "",
       output: (
         <div className="space-y-2 mb-2 mt-2">
-          <p className="text-green-400 font-bold text-base">=== Welcome to Haikal's Terminal ===</p>
+          <p className="text-green-400 font-bold text-base">
+            {lang === "id" ? "=== Selamat Datang di Terminal Haikal ===" : "=== Welcome to Haikal's Terminal ==="}
+          </p>
           <p className="text-gray-300">
-            Hi! I am the interactive assistant. To get started, type <span className="text-yellow-400 font-bold bg-yellow-400/10 px-1 rounded">help</span> and press Enter to see what I can do!
+            {lang === "id" ? (
+              <>Halo! Saya asisten interaktif. Ketik <span className="text-yellow-400 font-bold bg-yellow-400/10 px-1 rounded">help</span> lalu tekan Enter untuk melihat perintah yang tersedia!</>
+            ) : (
+              <>Hi! I am the interactive assistant. To get started, type <span className="text-yellow-400 font-bold bg-yellow-400/10 px-1 rounded">help</span> and press Enter to see what I can do!</>
+            )}
           </p>
           <p className="text-gray-400 text-xs italic">
-            (Try typing: whoami, skills, projects, contact)
+            ({lang === "id" ? "Coba ketik: whoami, skills, projects, contact" : "Try typing: whoami, skills, projects, contact"})
           </p>
         </div>
       ),
-      type: "system",
+      type: "system" as const,
     },
-  ]);
+  ];
+
+  const [history, setHistory] = useState<CommandHistory[]>(() => getInitialWelcome(language));
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -54,31 +63,35 @@ export default function InteractiveTerminal() {
     let output: string | JSX.Element = "";
     let type: "success" | "error" | "system" | "info" = "info";
 
+    const isId = language === "id";
+
     switch (cmd) {
       case "help":
         output = (
           <div className="space-y-1">
-            <p>Available commands:</p>
+            <p>{isId ? "Perintah yang tersedia:" : "Available commands:"}</p>
             <ul className="list-none pl-4 text-green-400">
-              <li><span className="text-yellow-400">whoami</span>    - Display summary about me</li>
-              <li><span className="text-yellow-400">skills</span>    - List my technical skills</li>
-              <li><span className="text-yellow-400">projects</span>  - Shortcut to projects section</li>
-              <li><span className="text-yellow-400">contact</span>   - Show contact information</li>
-              <li><span className="text-yellow-400">clear</span>     - Clear the terminal</li>
+              <li><span className="text-yellow-400">whoami</span>    - {isId ? "Tampilkan ringkasan tentang saya" : "Display summary about me"}</li>
+              <li><span className="text-yellow-400">skills</span>    - {isId ? "Daftar keahlian teknis saya" : "List my technical skills"}</li>
+              <li><span className="text-yellow-400">projects</span>  - {isId ? "Pindah ke bagian proyek" : "Shortcut to projects section"}</li>
+              <li><span className="text-yellow-400">contact</span>   - {isId ? "Tampilkan informasi kontak" : "Show contact information"}</li>
+              <li><span className="text-yellow-400">clear</span>     - {isId ? "Bersihkan layar terminal" : "Clear the terminal"}</li>
             </ul>
           </div>
         );
         break;
       case "whoami":
-        output = "Haikal Frastiawan - A Software Engineer passionate about scalable backend systems and responsive frontends.";
+        output = isId
+          ? "Haikal Frastiawan - Spesialis Backend Java berfokus pada microservices Spring Boot enterprise, API berkinerja tinggi, dan arsitektur bersih."
+          : "Haikal Frastiawan - Java Backend Specialist focused on enterprise Spring Boot microservices, high-throughput APIs, and clean architecture.";
         type = "success";
         break;
       case "skills":
-        output = "JavaScript, TypeScript, Golang, NestJS, React, Next.js, Postgres, MongoDB, Docker, Redis.";
+        output = "Java 21, Spring Boot 3, Spring Security, Spring Data JPA, Hibernate, PostgreSQL, MySQL, Redis, Docker, Kafka, Microservices.";
         type = "success";
         break;
       case "projects":
-        output = "Scrolling to projects section...";
+        output = isId ? "Menggulir ke bagian proyek..." : "Scrolling to projects section...";
         type = "system";
         setTimeout(() => {
           document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -86,7 +99,7 @@ export default function InteractiveTerminal() {
         }, 800);
         break;
       case "contact":
-        output = "Email: haikalfrastiawan@example.com | LinkedIn: /in/haikalfrastiawan";
+        output = "Email: haikalfrastiawan16@gmail.com | LinkedIn: /in/haikal-frastiawan-5b8287277";
         type = "success";
         break;
       case "clear":
@@ -94,11 +107,13 @@ export default function InteractiveTerminal() {
         setInput("");
         return;
       case "sudo":
-        output = "Nice try! This incident will be reported. 🚨";
+        output = isId ? "Percobaan bagus! Insiden ini akan dilaporkan. 🚨" : "Nice try! This incident will be reported. 🚨";
         type = "error";
         break;
       default:
-        output = `Command not found: ${cmd}. Type 'help' for available commands.`;
+        output = isId
+          ? `Perintah tidak ditemukan: ${cmd}. Ketik 'help' untuk melihat daftar perintah.`
+          : `Command not found: ${cmd}. Type 'help' for available commands.`;
         type = "error";
     }
 
@@ -201,7 +216,7 @@ export default function InteractiveTerminal() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   className="flex-1 bg-transparent outline-none border-none text-white font-mono placeholder:text-gray-600/70"
-                  placeholder="Ketik 'help' di sini lalu tekan Enter..."
+                  placeholder={language === "id" ? "Ketik 'help' di sini lalu tekan Enter..." : "Type 'help' here and press Enter..."}
                   spellCheck="false"
                   autoComplete="off"
                   autoFocus

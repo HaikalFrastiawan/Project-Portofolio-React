@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Github, Star, GitFork, ExternalLink, Activity } from "lucide-react";
+import { Star, GitFork, ExternalLink, Activity } from "lucide-react";
 import { GitHubCalendar } from 'react-github-calendar';
+import { useTranslation } from "@/context/TranslationContext";
 
 interface Repo {
   id: number;
@@ -16,6 +17,7 @@ interface Repo {
 const GITHUB_USERNAME = "haikalfrastiawan";
 
 const languageColors: Record<string, string> = {
+  Java: "hsl(25 85% 45%)",
   TypeScript: "hsl(210 80% 60%)",
   JavaScript: "hsl(50 80% 55%)",
   Go: "hsl(195 70% 55%)",
@@ -23,6 +25,7 @@ const languageColors: Record<string, string> = {
 };
 
 const GitHubSection = () => {
+  const { t } = useTranslation();
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -47,8 +50,8 @@ const GitHubSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="text-primary font-mono text-sm mb-2">{"// open source"}</p>
-          <h2 className="mb-12 text-3xl font-bold md:text-4xl text-white">GitHub Activity</h2>
+          <p className="text-primary font-mono text-sm mb-2">{t("github.badge")}</p>
+          <h2 className="mb-12 text-3xl font-bold md:text-4xl text-white">{t("github.title")}</h2>
         </motion.div>
 
         {loading ? (
@@ -74,7 +77,7 @@ const GitHubSection = () => {
                     <ExternalLink size={14} className="text-muted-foreground" />
                   </div>
                   <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
-                    {repo.description || "Building high-performance backend architectures."}
+                    {repo.description || t("github.default_desc")}
                   </p>
                   <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
                     {repo.language && (
@@ -100,7 +103,7 @@ const GitHubSection = () => {
               >
                 <div className="flex items-center gap-2 mb-8">
                   <Activity size={18} className="text-primary" />
-                  <span className="font-bold text-white uppercase tracking-wider text-sm">Contribution Activity</span>
+                  <span className="font-bold text-white uppercase tracking-wider text-sm">{t("github.activity")}</span>
                 </div>
                 
                 <div className="flex justify-center w-full overflow-x-auto pb-4 custom-scrollbar">
